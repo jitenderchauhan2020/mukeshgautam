@@ -2,14 +2,44 @@
 
 import { useEffect, useState } from 'react';
 import { heroData } from '@/data/siteData';
-import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import {
+  ChevronDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from '@heroicons/react/24/outline';
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const heroImages = [
+    '/images/Hero sections/WhatsApp Image 2025-08-08 at 7.07.17 PM.jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-08 at 7.07.44 PM.jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-08 at 7.07.45 PM.jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-08 at 7.07.45 PM (1).jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-08 at 7.07.45 PM (2).jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-08 at 10.21.35 PM.jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-08 at 10.21.43 PM.jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-08 at 10.36.01 PM.jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-08 at 10.36.02 PM.jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-08 at 10.36.02 PM (1).jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-08 at 10.37.27 PM.jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-08 at 10.37.28 PM.jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-08 at 10.38.10 PM.jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-08 at 10.38.14 PM.jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-08 at 10.41.21 PM.jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-08 at 10.41.21 PM (1).jpeg',
+  ];
 
   useEffect(() => {
     setIsVisible(true);
-  }, []);
+
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
 
   const scrollToPoetry = () => {
     const element = document.querySelector('#poetry');
@@ -18,67 +48,128 @@ const Hero = () => {
     }
   };
 
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide(
+      (prev) => (prev - 1 + heroImages.length) % heroImages.length
+    );
+  };
+
   return (
-    <section 
+    <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-[#113F67] via-[#34699A] to-[#58A0C8] overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-4 left-4 md:top-10 md:left-10 w-16 h-16 md:w-32 md:h-32 border border-white rounded-full animate-pulse"></div>
-        <div className="absolute top-1/4 right-8 md:right-20 w-8 h-8 md:w-16 md:h-16 border border-white rounded-full animate-pulse delay-700"></div>
-        <div className="absolute bottom-10 left-1/4 w-12 h-12 md:w-24 md:h-24 border border-white rounded-full animate-pulse delay-1000"></div>
-        <div className="absolute bottom-1/3 right-4 md:right-10 w-10 h-10 md:w-20 md:h-20 border border-white rounded-full animate-pulse delay-500"></div>
+      {/* Background Images */}
+      <div className="absolute inset-0">
+        {heroImages.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-[1500ms] ease-in-out ${
+              index === currentSlide ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <img
+              src={image}
+              alt={`मुकेश गौतम जी का प्रदर्शन ${index + 1}`}
+              className="w-full h-full object-cover"
+              style={{ objectPosition: 'center 30%' }}
+              loading={index === 0 ? 'eager' : 'lazy'}
+            />
+            {/* Gradient overlay for readability */}
+            <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/50 to-black/80"></div>
+          </div>
+        ))}
       </div>
 
-      {/* Content */}
-      <div className="container-custom relative z-10 text-center">
-        <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          {/* Main Title */}
-          <h1 className="heading-1 text-white mb-4 md:mb-6 hindi-artistic">
-            {heroData.title}
+      {/* Navigation Arrows */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full p-3 text-white hover:text-[#FDF5AA] transition-all duration-300 hover:scale-110"
+        aria-label="पिछली तस्वीर"
+      >
+        <ChevronLeftIcon className="w-6 h-6" />
+      </button>
+
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full p-3 text-white hover:text-[#FDF5AA] transition-all duration-300 hover:scale-110"
+        aria-label="अगली तस्वीर"
+      >
+        <ChevronRightIcon className="w-6 h-6" />
+      </button>
+
+      {/* Text & CTA stacked in center */}
+      <div className="relative z-10 container mx-auto px-4 text-center flex flex-col items-center justify-center h-full">
+        <div
+          className={`transition-all duration-1000 delay-300 ${
+            isVisible
+              ? 'opacity-100 translate-y-0'
+              : 'opacity-0 translate-y-10'
+          }`}
+        >
+          {/* Title */}
+          <div className=''>
+            <h1  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-2xl">
+            <span className="inline-block bg-gradient-to-r from-white via-[#FDF5AA] to-white bg-clip-text text-transparent leading-24">
+              {heroData.title}
+            </span>
           </h1>
+          </div>
 
-          {/* Subtitle in Hindi */}
-          <h2 className="text-xl md:text-2xl lg:text-4xl text-[#FDF5AA] mb-3 md:mb-4 hindi-text font-medium">
-            {heroData.subtitle}
-          </h2>
-
-          {/* English subtitle */}
-          <p className="text-base md:text-lg lg:text-xl text-white/90 mb-6 md:mb-8 english-text italic">
+          {/* English Subtitle */}
+          <p className="text-base sm:text-lg md:text-xl text-white/95 italic mb-6 max-w-2xl mx-auto drop-shadow-md">
             "{heroData.subtitleEnglish}"
           </p>
 
-          {/* Description */}
-          <p className="text-base md:text-lg lg:text-xl text-white/80 mb-8 md:mb-12 hindi-text max-w-3xl mx-auto leading-relaxed px-4">
-            {heroData.description}
-          </p>
+          {/* Hindi Description */}
+            <p className="text-sm font-bold sm:text-base md:text-lg text-white mb-32 max-w-3xl mx-auto leading-relaxed drop-shadow-md">
+              {heroData.description}
+            </p>
 
-          {/* CTA Button */}
-          <button
-            onClick={scrollToPoetry}
-            className="btn-primary bg-[#FDF5AA] text-[#113F67] hover:bg-white hover:shadow-lg transform hover:-translate-y-1"
-          >
-            {heroData.ctaText}
-            <ChevronDownIcon className="ml-2 h-4 w-4 md:h-5 md:w-5 animate-bounce" />
-          </button>
+
+
+          {/* CTA Button - Themed and Centered */}
+          <div className="flex justify-center mt-16">
+            <button
+              onClick={scrollToPoetry}
+              className="group bg-blue-950 text-white px-4 py-6 rounded-full font-bold text-md hindi-text shadow-md transform hover:scale-101 transition-all duration-500 flex items-center justify-center gap-3 min-w-[200px] "
+            >
+              <span className="text-center">{heroData.ctaText}</span>
+              <span className="icon group-hover:translate-x-1 transition-transform duration-300">
+                <ChevronDownIcon className="h-5 w-5 group-hover:animate-bounce" />
+              </span>
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
-        <ChevronDownIcon className="h-6 w-6 md:h-8 md:w-8" />
-      </div>
+      {/* Slide Indicators */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
+        <div className="flex flex-wrap justify-center gap-2">
+          {heroImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
+                index === currentSlide
+                  ? 'bg-[#FDF5AA] scale-125 shadow-lg'
+                  : 'bg-white/40 hover:bg-white/70'
+              }`}
+              aria-label={`स्लाइड ${index + 1} पर जाएं`}
+            />
+          ))}
+        </div>
 
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-        <svg className="absolute top-10 md:top-20 left-10 md:left-20 w-8 h-8 md:w-16 md:h-16 text-white/20 animate-spin-slow" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-        
-        <svg className="absolute bottom-20 md:bottom-32 right-16 md:right-32 w-6 h-6 md:w-12 md:h-12 text-white/20 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
-        </svg>
+        {/* Slide Counter */}
+        <div className="mt-2 text-center">
+          <span className="text-xs sm:text-sm text-white/80 bg-black/20 backdrop-blur-sm rounded-full px-2 py-1">
+            {currentSlide + 1} / {heroImages.length}
+          </span>
+        </div>
       </div>
     </section>
   );

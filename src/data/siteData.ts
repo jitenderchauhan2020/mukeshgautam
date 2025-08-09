@@ -25,18 +25,18 @@ export const siteConfig = {
     youtube: "https://youtube.com/@drmukeshgautam",
     twitter: "https://twitter.com/drmukeshgautam",
     email: "contact@drmukeshgautam.com",
-    phone: "+91 98765 43210"
+    phone: "+91 98765 43210",
+    whatsapp: "+91 98765 43210"  // Added for preheader
   },
   
-  // Navigation items
+  // Navigation items - All in Hindi
   navigation: [
-    { name: "मुख्य", nameEn: "Home", href: "#home" },
-    { name: "परिचय", nameEn: "About", href: "#about" },
-    { name: "कविताएं", nameEn: "Poetry", href: "#poetry" },
-    { name: "टीवी शो", nameEn: "TV Shows", href: "#tv-shows" },
-    { name: "गैलरी", nameEn: "Gallery", href: "#gallery" },
-    { name: "आगामी शो", nameEn: "Upcoming Shows", href: "#upcoming-shows" },
-    { name: "संपर्क", nameEn: "Contact", href: "#contact" }
+    { name: "Home", nameEn: "Home", href: "#home" },
+    { name: "About", nameEn: "About", href: "#about" },
+    { name: "Gallery", nameEn: "Gallery", href: "#gallery" },
+    { name: "Blogs", nameEn: "Blog", href: "#blog" },
+    { name: "Upcoming Shows", nameEn: "Upcoming Shows", href: "#upcoming-shows" },
+    { name: "Contact", nameEn: "Contact", href: "#contact" }
   ]
 };
 

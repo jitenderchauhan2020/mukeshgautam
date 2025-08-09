@@ -1,0 +1,30 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: '#113F67',
+        secondary: '#34699A',
+        highlight: '#58A0C8',
+        accent: '#FDF5AA',
+      },
+      fontFamily: {
+        'hindi': ['Noto Sans Devanagari', 'sans-serif'],
+        'hindi-artistic': ['Kalam', 'cursive'],
+      },
+      spacing: {
+        '18': '4.5rem',
+        '26': '6.5rem',
+        '30': '7.5rem',
+        '34': '8.5rem',
+      }
+    },
+  },
+  plugins: [],
+}

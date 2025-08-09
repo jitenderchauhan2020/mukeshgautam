@@ -1,3 +1,4 @@
+import PreHeader from '@/components/ui/PreHeader';
 import Navigation from '@/components/ui/Navigation';
 import Footer from '@/components/ui/Footer';
 import Hero from '@/components/sections/Hero';
@@ -11,6 +12,9 @@ import Contact from '@/components/sections/Contact';
 export default function Home() {
   return (
     <main className="min-h-screen">
+      {/* Flash Strip for Upcoming Shows */}
+      <PreHeader />
+      
       {/* Fixed Navigation */}
       <Navigation />
       

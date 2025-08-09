@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   description: "प्रसिद्ध हास्य कवि डॉ. मुकेश गौतम का आधिकारिक वेबसाइट। राष्ट्रीय पुरस्कार विजेता कवि, स्टैंड-अप कॉमेडियन और टीवी कलाकार।",
   keywords: ["hasya kavi", "mukesh gautam", "stand up comedian", "hindi poetry", "humor", "comedy", "tv shows"],
   authors: [{ name: "डॉ. मुकेश गौतम" }],
+  icons: {
+    icon: '/images/favicon.jpeg',
+    shortcut: '/images/favicon.jpeg',
+    apple: '/images/favicon.jpeg',
+  },
   openGraph: {
     title: "डॉ. मुकेश गौतम | हास्य कवि | Stand-up Comedian",
     description: "प्रसिद्ध हास्य कवि डॉ. मुकेश गौतम का आधिकारिक वेबसाइट। राष्ट्रीय पुरस्कार विजेता कवि, स्टैंड-अप कॉमेडियन और टीवी कलाकार।",
@@ -13,6 +18,7 @@ export const metadata: Metadata = {
     siteName: "डॉ. मुकेश गौतम",
     locale: 'hi_IN',
     type: 'website',
+    images: '/images/Profile.jpeg',
   },
   twitter: {
     card: 'summary_large_image',
