@@ -113,7 +113,7 @@ const Hero = () => {
         >
           {/* Title */}
           <div className='mb-4 md:mb-6'>
-            <h1  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white drop-shadow-2xl leading-8">
+            <h1  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white drop-shadow-2xl leading-tight tracking-tight mb-2 md:mb-4 px-4">
             <span className="inline-block bg-gradient-to-r from-white via-[#FDF5AA] to-white bg-clip-text text-transparent">
               {heroData.title}
             </span>

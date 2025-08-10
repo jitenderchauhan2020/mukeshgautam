@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
 import { galleryImages, type GalleryImage } from '../../data/galleryData';
-import './gallery.css';
+// import './gallery.css';
 
 const Gallery = () => {
 
