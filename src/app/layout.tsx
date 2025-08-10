@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://drmukeshgautam.com'),
   title: "डॉ. मुकेश गौतम | हास्य कवि | Stand-up Comedian",
   description: "प्रसिद्ध हास्य कवि डॉ. मुकेश गौतम का आधिकारिक वेबसाइट। राष्ट्रीय पुरस्कार विजेता कवि, स्टैंड-अप कॉमेडियन और टीवी कलाकार।",
   keywords: ["hasya kavi", "mukesh gautam", "stand up comedian", "hindi poetry", "humor", "comedy", "tv shows"],

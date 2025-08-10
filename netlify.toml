@@ -1,11 +1,17 @@
 [build]
   command = "npm run build"
-  publish = ".next"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+[functions]
+  external_node_modules = ["sharp"]
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+# Enable forms for Next.js
+[plugins]
+  [[plugins]]
+    package = "@netlify/plugin-nextjs"
+    
+    [plugins.inputs]
+      enable_forms = true
+
+# Environment variables (you need to set these in Netlify dashboard too)
+[build.environment]
+  NEXT_PUBLIC_CONTACT_EMAIL = "contact@drmukeshgautam.com"
