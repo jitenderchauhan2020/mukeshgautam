@@ -176,105 +176,112 @@ const Contact = () => {
             </div>
 
             {/* Contact Form */}
-            <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-              <div className="bg-white rounded-xl md:rounded-2xl p-6 md:p-8 shadow-xl">
-                <h3 className="text-xl md:text-2xl font-bold text-[#113F67] mb-4 md:mb-6 hindi-text">
-                  संदेश भेजें
-                </h3>
+            <form
+  name="contact"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  onSubmit={handleSubmit}
+  className="space-y-4 md:space-y-6"
+>
+  {/* Hidden form name for Netlify */}
+  <input type="hidden" name="form-name" value="contact" />
+  {/* Honeypot to block bots */}
+  <p className="hidden">
+    <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+  </p>
 
-                <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
-                  {/* Name Field */}
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-[#113F67] mb-2 hindi-text">
-                      नाम
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="form-input"
-                      placeholder="आपका नाम"
-                    />
-                  </div>
+  {/* Name Field */}
+  <div>
+    <label htmlFor="name" className="block text-sm font-medium text-[#113F67] mb-2 hindi-text">
+      नाम
+    </label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      value={formData.name}
+      onChange={handleInputChange}
+      required
+      className="form-input"
+      placeholder="आपका नाम"
+    />
+  </div>
 
-                  {/* Email Field */}
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-[#113F67] mb-2 hindi-text">
-                      ईमेल
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="form-input english-text"
-                      placeholder="your.email@example.com"
-                    />
-                  </div>
+  {/* Email Field */}
+  <div>
+    <label htmlFor="email" className="block text-sm font-medium text-[#113F67] mb-2 hindi-text">
+      ईमेल
+    </label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      value={formData.email}
+      onChange={handleInputChange}
+      required
+      className="form-input english-text"
+      placeholder="your.email@example.com"
+    />
+  </div>
 
-                  {/* Message Field */}
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-[#113F67] mb-2 hindi-text">
-                      संदेश
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      required
-                      rows={4}
-                      className="form-input resize-none hindi-text"
-                      placeholder="अपना संदेश यहाँ लिखें..."
-                    ></textarea>
-                  </div>
+  {/* Message Field */}
+  <div>
+    <label htmlFor="message" className="block text-sm font-medium text-[#113F67] mb-2 hindi-text">
+      संदेश
+    </label>
+    <textarea
+      id="message"
+      name="message"
+      value={formData.message}
+      onChange={handleInputChange}
+      required
+      rows={4}
+      className="form-input resize-none hindi-text"
+      placeholder="अपना संदेश यहाँ लिखें..."
+    ></textarea>
+  </div>
 
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className={`btn-primary w-full ${
-                      isSubmitting 
-                        ? 'opacity-70 cursor-not-allowed' 
-                        : ''
-                    }`}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <svg className="animate-spin -ml-1 mr-3 h-4 w-4 md:h-5 md:w-5 text-white" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                        भेजा जा रहा है...
-                      </>
-                    ) : (
-                      <>
-                        संदेश भेजें
-                        <PaperAirplaneIcon className="ml-2 h-4 w-4 md:h-5 md:w-5" />
-                      </>
-                    )}
-                  </button>
+  {/* Submit Button */}
+  <button
+    type="submit"
+    disabled={isSubmitting}
+    className={`btn-primary w-full ${
+      isSubmitting 
+        ? 'opacity-70 cursor-not-allowed' 
+        : ''
+    }`}
+  >
+    {isSubmitting ? (
+      <>
+        <svg className="animate-spin -ml-1 mr-3 h-4 w-4 md:h-5 md:w-5 text-white" fill="none" viewBox="0 0 24 24">
+          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        भेजा जा रहा है...
+      </>
+    ) : (
+      <>
+        संदेश भेजें
+        <PaperAirplaneIcon className="ml-2 h-4 w-4 md:h-5 md:w-5" />
+      </>
+    )}
+  </button>
 
-                  {/* Success/Error Messages */}
-                  {submitStatus === 'success' && (
-                    <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg hindi-text text-sm md:text-base">
-                      धन्यवाद! आपका संदेश भेज दिया गया है।
-                    </div>
-                  )}
+  {/* Success/Error Messages */}
+  {submitStatus === 'success' && (
+    <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg hindi-text text-sm md:text-base">
+      धन्यवाद! आपका संदेश भेज दिया गया है।
+    </div>
+  )}
 
-                  {submitStatus === 'error' && (
-                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg hindi-text text-sm md:text-base">
-                      क्षमा करें, संदेश भेजने में त्रुटि हुई। कृपया पुनः प्रयास करें।
-                    </div>
-                  )}
-                </form>
-              </div>
-            </div>
+  {submitStatus === 'error' && (
+    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg hindi-text text-sm md:text-base">
+      क्षमा करें, संदेश भेजने में त्रुटि हुई। कृपया पुनः प्रयास करें।
+    </div>
+  )}
+</form>
+
           </div>
         </div>
       </div>
