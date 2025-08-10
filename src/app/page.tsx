@@ -7,7 +7,7 @@ import Poems from '@/components/sections/Poems';
 import TVShows from '@/components/sections/TVShows';
 import Gallery from '@/components/sections/Gallery';
 import UpcomingShows from '@/components/sections/UpcomingShows';
-import Contact from '@/components/sections/Contact';
+import ContactNew from '@/components/sections/ContactNew';
 
 export default function Home() {
   return (
@@ -39,7 +39,7 @@ export default function Home() {
         <UpcomingShows />
         
         {/* Contact Section */}
-        <Contact />
+        <ContactNew />
       </div>
       
       {/* Footer */}

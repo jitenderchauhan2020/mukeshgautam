@@ -97,6 +97,22 @@ body {
   font-family: var(--font-sans);
 }
 
+/* Text truncation utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Utility classes for text truncation */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .buttonHero1{
 display: inline-block;
 outline: none;
@@ -623,4 +639,266 @@ transition: background-color .17s ease,color .17s ease;
     min-width: 160px;
     gap: 8px;
   }
+}
+
+/* Social Media Style Post Cards */
+.post-card {
+  @apply bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100;
+}
+
+.post-header-avatar {
+  @apply w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-400 rounded-full flex items-center justify-center text-white font-bold text-sm;
+}
+
+@media (min-width: 768px) {
+  .post-header-avatar {
+    @apply w-12 h-12 text-base;
+  }
+}
+
+.post-action-button {
+  @apply flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-300 text-xs font-medium;
+}
+
+@media (min-width: 768px) {
+  .post-action-button {
+    @apply text-sm;
+  }
+}
+
+.poem-preview {
+  @apply bg-gray-50 rounded-lg p-4 space-y-1 text-sm leading-relaxed;
+}
+
+@media (min-width: 768px) {
+  .poem-preview {
+    @apply p-6 space-y-2 text-base;
+  }
+}
+
+/* Enhanced responsive grid for mobile */
+@media (max-width: 640px) {
+  .container-custom {
+    @apply px-4;
+  }
+  
+  .section-padding {
+    @apply py-12;
+  }
+  
+  /* Better card layout for mobile */
+  .mobile-card-container {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  /* Improved button styles for mobile */
+  .btn-mobile {
+    padding: 14px 24px;
+    font-size: 16px;
+    border-radius: 12px;
+    min-height: 48px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Better image sizing for mobile */
+  .responsive-image {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
+  }
+  
+  /* Mobile-first responsive design enhancements */
+@media (max-width: 768px) {
+  /* Improve scroll performance */
+  html {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Better text selection on mobile */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Mobile navigation improvements */
+  .mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(17, 63, 103, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Mobile card improvements */
+  .mobile-optimized-card {
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .mobile-optimized-card:active {
+    transform: scale(0.98);
+  }
+  
+  /* Better form styling for mobile */
+  .mobile-form-input {
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 16px;
+    border: 2px solid #e5e7eb;
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-form-input:focus {
+    border-color: #34699A;
+    box-shadow: 0 0 0 3px rgba(52, 105, 154, 0.1);
+    outline: none;
+  }
+  
+  /* Mobile-specific animations */
+  .mobile-slide-up {
+    animation: mobileSlideUp 0.4s ease-out forwards;
+  }
+  
+  @keyframes mobileSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Better spacing for mobile content */
+  .mobile-content-spacing {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .mobile-section-spacing {
+    padding: 48px 0;
+  }
+}
+}
+
+/* Better touch targets for mobile */
+@media (max-width: 768px) {
+  .post-action-button {
+    @apply min-h-[44px] px-4 py-2;
+  }
+  
+  button {
+    @apply min-h-[44px];
+  }
+  
+  /* Improve touch targets for interactive elements */
+  button, a, input, textarea {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Better spacing for mobile navigation */
+  .mobile-nav-item {
+    min-height: 48px;
+    padding: 12px 16px;
+  }
+  
+  /* Improved text input sizes for mobile */
+  input[type="text"], 
+  input[type="email"], 
+  input[type="tel"], 
+  textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 12px 16px;
+  }
+}
+
+/* Improved text contrast and readability */
+.poem-text {
+  line-height: 1.7;
+}
+
+@media (max-width: 640px) {
+  .poem-text {
+    line-height: 1.6;
+  }
+}
+
+/* Animation improvements */
+.social-post-enter {
+  @apply opacity-0 translate-y-4;
+  transition: all 0.5s ease-out;
+}
+
+.social-post-enter-active {
+  @apply opacity-100 translate-y-0;
+}
+
+/* Better spacing for category filters on mobile */
+@media (max-width: 640px) {
+  .category-filter-container {
+    @apply gap-2 px-2;
+  }
+  
+  .category-filter-button {
+    @apply text-xs px-2 py-1;
+  }
+}
+
+/* Single Show Scrolling Animation - Right to Left (One by One) */
+@keyframes single-show-scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  15% {
+    transform: translateX(0%);
+  }
+  85% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-single-show-scroll {
+  animation: single-show-scroll 6s ease-in-out;
+  display: inline-block;
+}
+
+.animate-single-show-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* Alternative faster version */
+@keyframes quick-single-show-scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  20% {
+    transform: translateX(0%);
+  }
+  80% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-quick-show-scroll {
+  animation: quick-single-show-scroll 4s ease-in-out;
+  display: inline-block;
 }

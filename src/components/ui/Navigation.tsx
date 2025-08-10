@@ -17,6 +17,28 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const nav = document.querySelector('nav');
+      if (isOpen && nav && !nav.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('click', handleClickOutside);
+      document.body.style.overflow = 'hidden'; // Prevent body scroll when menu is open
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   const handleNavClick = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -30,12 +52,12 @@ const Navigation = () => {
       isScrolled ? 'bg-[#113F67] shadow-lg' : 'bg-[#113F67]/95 backdrop-blur-sm'
     }`}>
       <div className="container-custom">
-        <div className="flex items-center justify-between py-4 md:py-6">
+        <div className="flex items-center justify-between py-2 md:py-2">
           {/* Left: Profile Section */}
-          <div className="flex items-center space-x-4 md:space-x-6">
+          <div className="flex items-center space-x-3 md:space-x-6">
             {/* Circular Profile Image */}
             <div className="relative">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-[#FDF5AA] shadow-lg">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-[#FDF5AA] shadow-lg">
                 <img 
                   src="/images/Profile.jpeg" 
                   alt="डॉ. मुकेश गौतम" 
@@ -57,12 +79,13 @@ const Navigation = () => {
             </div>
 
             {/* Name and Title */}
-            <div className="flex flex-col ">
-              <h1 className="text-base sm:text-lg md:text-xl font-bold text-white hindi-text leading-tight">
+            <div className="flex flex-col">
+              <h1 className="text-sm sm:text-base md:text-xl font-bold text-white hindi-text leading-tight">
                 Mukesh Gautam
               </h1>
               <p className="text-xs sm:text-sm md:text-sm text-[#FDF5AA] hindi-text leading-tight">
-                Hasya kavi | Stand-up Comedian | Manch  sanchalak
+                <span className="hidden sm:inline">Hasya kavi | Stand-up Comedian | Manch sanchalak</span>
+                <span className="sm:hidden">Hasya kavi | Comedian</span>
                 {/* हास्य कवि | स्टैंड-अप कॉमेडियन | मंच संचालक */}
               </p>
             </div>
@@ -89,8 +112,9 @@ const Navigation = () => {
           <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white hover:text-[#FDF5AA] p-2 rounded-md transition-colors bg-[#34699A]/20 backdrop-blur-sm"
+              className="text-white hover:text-[#FDF5AA] p-3 rounded-md transition-colors bg-[#34699A]/20 backdrop-blur-sm touch-manipulation"
               aria-label="Toggle menu"
+              aria-expanded={isOpen}
             >
               {isOpen ? (
                 <XMarkIcon className="h-6 w-6" />
@@ -104,21 +128,21 @@ const Navigation = () => {
 
       {/* Mobile Navigation */}
       <div className={`lg:hidden transition-all duration-300 ease-in-out ${
-        isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        isOpen ? 'max-h-screen opacity-100 visible' : 'max-h-0 opacity-0 invisible'
       } overflow-hidden`}>
         <div className="bg-[#113F67] border-t border-[#34699A]/30">
           <div className="container-custom">
-            <div className="py-4 md:py-6 space-y-2">
+            <div className="py-4 md:py-6 space-y-1">
               {siteConfig.navigation.map((item, index) => (
                 <button
                   key={item.href}
                   onClick={() => handleNavClick(item.href)}
-                  className="block w-full text-left px-4 py-3 text-white hover:text-[#FDF5AA] hover:bg-[#34699A]/20 rounded-md text-base font-medium hindi-text transition-all duration-200 transform hover:translate-x-2"
+                  className="block w-full text-left px-4 py-4 text-white hover:text-[#FDF5AA] hover:bg-[#34699A]/20 rounded-lg text-base font-medium hindi-text transition-all duration-200 transform hover:translate-x-2 active:scale-95 touch-manipulation min-h-[48px] flex items-center"
                   style={{
                     animationDelay: `${index * 100}ms`
                   }}
                 >
-                  <span className="flex items-center space-x-3">
+                  <span className="flex items-center space-x-3 w-full">
                     <span className="w-2 h-2 bg-[#FDF5AA] rounded-full opacity-0 transition-opacity duration-200 group-hover:opacity-100"></span>
                     <span>{item.name}</span>
                   </span>

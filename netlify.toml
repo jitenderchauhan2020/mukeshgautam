@@ -1,0 +1,7 @@
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Netlify Forms Configuration
+# This ensures forms work properly on Netlify deployment

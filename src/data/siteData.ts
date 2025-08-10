@@ -20,10 +20,10 @@ export const siteConfig = {
   
   // Social media and contact
   social: {
-    instagram: "https://instagram.com/drmukeshgautam",
-    facebook: "https://facebook.com/drmukeshgautam",
-    youtube: "https://youtube.com/@drmukeshgautam",
-    twitter: "https://twitter.com/drmukeshgautam",
+    instagram: "https://www.instagram.com/kavimukeshgautam?igsh=c2k4dmt0ejZmd2t5&utm_source=qr",
+    facebook: "https://www.facebook.com/share/16mqRtaG7c/?mibextid=wwXIfr",
+    youtube: "https://youtube.com/@mukeshgautamofficial?si=gXlrIhpyf_ZlbLB0",
+    // twitter: "https://twitter.com/drmukeshgautam",
     email: "contact@drmukeshgautam.com",
     phone: "+91 98765 43210",
     whatsapp: "+91 98765 43210"  // Added for preheader
@@ -45,11 +45,10 @@ export const aboutData = {
   title: "डॉ. मुकेश गौतम के बारे में",
   titleEn: "About Dr. Mukesh Gautam",
   subtitle: "हास्य कवि | स्टैंड-अप कॉमेडियन | मंच संचालक",
-  subtitleEn: "Hasya Kavi | Stand-up Comedian | Stage Host",
+  subtitleEn: "Hasya kavi | Stand-up Comedian | Manch sanchalak",
   
   bio: [
     "डॉ. मुकेश गौतम एक प्रसिद्ध हास्य कवि, स्टैंड-अप कॉमेडियन और मंच संचालक हैं। वे अपनी सहज हास्य प्रस्तुति के लिए देश भर में जाने जाते हैं।",
-    "विगत 30 वर्षों से देश-विदेश में सहज हास्य की 2500 प्रस्तुतियां देकर वे लाखों लोगों का मनोरंजन कर चुके हैं। उनकी पारिवारिक हास्य शैली हर उम्र के लोगों को प्रिय है।",
     "पर्यावरण के क्षेत्र में भी उनका महत्वपूर्ण योगदान है। अभी तक देश भर में 42 हजार वृक्षारोपण का कार्य कर चुके हैं।"
   ],
   
@@ -61,15 +60,17 @@ export const aboutData = {
   ],
   
   achievements: [
-    "राष्ट्रीय मेदिनी पुरस्कार वर्ष 2004 कविता के लिए दो बार",
-    "महाराष्ट्र राज्य हिंदी साहित्य अकादेमी पुरस्कार (वर्ष 2013 और 2018)",
+    "राष्ट्रीय मेदिनी पुरस्कार वर्ष 2004 ",
+    "कविता के लिए दो बार महाराष्ट्र राज्य हिंदी साहित्य अकादेमी पुरस्कार (वर्ष 2013 और 2018)",
     "अनेक सरकारी एवं गैर सरकारी पुरस्कारों से सम्मानित",
-    "पर्यावरण के क्षेत्र में महत्वपूर्ण कार्य - 42 हजार वृक्षारोपण",
-    "मराठी, अंग्रेजी, तमिल भाषाओं में पुस्तकों का अनुवाद प्रकाशित",
-    "विगत 30 वर्षों से देश-विदेश में 2500 हास्य प्रस्तुतियां"
+    "पर्यावरण के क्षेत्र में महत्वपूर्ण कार्य - 42 हजार वृक्षारोपण",// Added for environmental contribution
+    "मराठी, अंग्रेजी, तमिल भाषाओं में पुस्तकों का अनुवाद प्रकाशित", //
+    "विगत 30 वर्षों से देश-विदेश में 2500 हास्य प्रस्तुतियां",
+    "कवि सम्मेलन में पारिवारिक एवं सहज हास्य प्रस्तुति",
+    "एक दर्जन पुस्तके प्रकाशित पुस्तकों का अनेक भाषाओं में अनुवाद भी प्रकाशित रचनाएं  पाठ्यक्रम में भी शामिल",
+    "एक दर्जन पुस्तके प्रकाशित",
+    "पुस्तकों का अनेक भाषाओं में अनुवाद भी प्रकाशित"
   ],
-  
-  image: "/images/dr-mukesh-gautam-profile.jpg"
 };
 
 // Hero section data
@@ -83,22 +84,130 @@ export const heroData = {
   backgroundImage: "/images/hero-bg.jpg"
 };
 
-// TV Shows data
+// TV Shows data with English channel names and video links
 export const tvShows = [
-  { name: "द ग्रेट इंडियन लाफ्टर चैलेंज", channel: "स्टार वन", type: "हास्य" },
-  { name: "कॉमेडी चैंपियन", channel: "स्टार वन", type: "हास्य" },
-  { name: "कॉमेडी स्टार", channel: "सहारा टीवी", type: "हास्य" },
-  { name: "अंगूर", channel: "ईटीसी टीवी", type: "हास्य" },
-  { name: "हंसगुल्ले", channel: "बिग मैजिक", type: "हास्य" },
-  { name: "राजू हाजिर हो", channel: "एनडीटीवी इमेजिन", type: "हास्य" },
-  { name: "जॉनी आला रे", channel: "जी टीवी", type: "हास्य" },
-  { name: "सबसे पॉलिटिकली इनकरेक्ट कौन", channel: "NDTV", type: "हास्य" },
-  { name: "बहुत खूब", channel: "सोनी टीवी", type: "हास्य" },
-  { name: "वाह वाह", channel: "सब टीवी", type: "हास्य" },
-  { name: "ऑल स्टार", channel: "पोगो टीवी", type: "हास्य" },
-  { name: "वाह भाई वाह", channel: "शेमारू टीवी", type: "हास्य" },
-  { name: "जस्ट लाफ बाकी माफ", channel: "इंडिया टीवी", type: "हास्य" },
-  { name: "हास्य कवि मुकाबला", channel: "जी स्माइल टीवी", type: "हास्य" },
-  { name: "हास्य हंगामा", channel: "दबंग टीवी", type: "हास्य" },
-  { name: "कॉमेडी धमाल", channel: "धमाल टीवी", type: "हास्य" }
+  { 
+    name: "द ग्रेट इंडियन लाफ्टर चैलेंज", 
+    channel: "Star One", 
+    type: "हास्य",
+    videoUrl: "https://youtu.be/dQw4w9WgXcQ" 
+  },
+  { 
+    name: "कॉमेडी चैंपियन", 
+    channel: "Star One", 
+    type: "हास्य",
+    videoUrl: "https://youtu.be/dQw4w9WgXcQ" 
+  },
+  { 
+    name: "कॉमेडी स्टार", 
+    channel: "Sahara TV", 
+    type: "हास्य",
+    videoUrl: "https://youtu.be/dQw4w9WgXcQ" 
+  },
+  { 
+    name: "अंगूर", 
+    channel: "ETC TV", 
+    type: "हास्य",
+    videoUrl: "https://youtu.be/dQw4w9WgXcQ" 
+  },
+  { 
+    name: "हंसगुल्ले", 
+    channel: "Big Magic", 
+    type: "हास्य",
+    videoUrl: "https://youtu.be/dQw4w9WgXcQ" 
+  },
+  { 
+    name: "राजू हाजिर हो", 
+    channel: "NDTV Imagine", 
+    type: "हास्य",
+    videoUrl: "https://youtu.be/dQw4w9WgXcQ" 
+  },
+  { 
+    name: "जॉनी आला रे", 
+    channel: "Zee TV", 
+    type: "हास्य",
+    videoUrl: "https://youtu.be/dQw4w9WgXcQ" 
+  },
+  { 
+    name: "सबसे पॉलिटिकली इनकरेक्ट कौन", 
+    channel: "NDTV", 
+    type: "हास्य",
+    videoUrl: "https://youtu.be/dQw4w9WgXcQ" 
+  },
+  { 
+    name: "बहुत खूब", 
+    channel: "Sony TV", 
+    type: "हास्य",
+    videoUrl: "https://youtu.be/Oz8w47ISFqc?si=n2hvWm5VjbPY-kKv" 
+  },
+  { 
+    name: "वाह वाह", 
+    channel: "SAB TV", 
+    type: "हास्य",
+    videoUrl: "https://youtu.be/buirOn1NfFU?si=uEHzewGL5K3k2XfE" 
+  },
+  { 
+    name: "ऑल स्टार", 
+    channel: "Pogo TV", 
+    type: "हास्य",
+    videoUrl: "https://youtu.be/dQw4w9WgXcQ" 
+  },
+  { 
+    name: "वाह भाई वाह", 
+    channel: "Shemaroo TV", 
+    type: "हास्य",
+    videoUrl: "https://youtu.be/EQlPXF-qffs?si=2znKQNIo3gZLAvYO" 
+  },
+  { 
+    name: "जस्ट लाफ बाकी माफ", 
+    channel: "India TV", 
+    type: "हास्य",
+    videoUrl: "https://youtu.be/dQw4w9WgXcQ" 
+  },
+  { 
+    name: "हास्य कवि मुकाबला", 
+    channel: "Zee Smile TV", 
+    type: "हास्य",
+    videoUrl: "https://youtu.be/dQw4w9WgXcQ" 
+  },
+  { 
+    name: "हास्य हंगामा", 
+    channel: "Dabang TV", 
+    type: "हास्य",
+    videoUrl: "https://youtu.be/dQw4w9WgXcQ" 
+  },
+  { 
+    name: "कॉमेडी धमाल", 
+    channel: "Dhamal TV", 
+    type: "हास्य",
+    videoUrl: "https://youtu.be/dQw4w9WgXcQ" 
+  }
+];
+
+// Special featured videos with actual YouTube links
+export const featuredVideos = [
+  {
+    title: "वाह भाई वाह",
+    channel: "Shemaroo TV",
+    videoUrl: "https://youtu.be/EQlPXF-qffs?si=2znKQNIo3gZLAvYO",
+    thumbnail: "https://img.youtube.com/vi/EQlPXF-qffs/maxresdefault.jpg"
+  },
+  {
+    title: "वाह वाह क्या बात है",
+    channel: "SAB TV", 
+    videoUrl: "https://youtu.be/buirOn1NfFU?si=uEHzewGL5K3k2XfE",
+    thumbnail: "https://img.youtube.com/vi/buirOn1NfFU/maxresdefault.jpg"
+  },
+  {
+    title: "बहुत खूब",
+    channel: "Sony TV",
+    videoUrl: "https://youtu.be/Oz8w47ISFqc?si=n2hvWm5VjbPY-kKv",
+    thumbnail: "https://img.youtube.com/vi/Oz8w47ISFqc/maxresdefault.jpg"
+  },
+  {
+    title: "Once More",
+    channel: "Doordarshan",
+    videoUrl: "https://youtu.be/hE4NuoFIYCk?si=LM8ti1aZGPEIU3_g",
+    thumbnail: "https://img.youtube.com/vi/hE4NuoFIYCk/maxresdefault.jpg"
+  }
 ];

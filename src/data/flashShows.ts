@@ -1,35 +1,37 @@
-// Upcoming Shows Data for Preheader Flash Strip
+// Import the main upcoming shows data
+import { upcomingShows, UpcomingShow } from './poemsData';
+
+// Flash Show interface for preheader display
 export interface FlashShow {
   id: string;
   date: string;
   location: string;
-  type: "कवि सम्मेलन" | "हास्य कार्यक्रम" | "स्टैंड-अप शो" | "निजी कार्यक्रम";
-  isActive: boolean; // To control which shows appear in flash strip
+  type: "कवि सम्मेलन" | "हास्य कार्यक्रम" | "टीवी शो" | "निजी कार्यक्रम";
+  isActive: boolean;
 }
 
-export const flashShows: FlashShow[] = [
-  {
-    id: "1",
-    date: "15 दिसंबर 2024",
-    location: "मुंबई, महाराष्ट्र",
-    type: "कवि सम्मेलन",
+// Function to convert date format for flash display
+const formatDateForFlash = (dateString: string): string => {
+  const date = new Date(dateString);
+  const day = date.getDate();
+  const month = date.toLocaleDateString('en-IN', { month: 'long' });
+  const year = date.getFullYear();
+  return `${day} ${month} ${year}`;
+};
+
+// Function to convert upcoming shows to flash shows format
+const convertToFlashShows = (shows: UpcomingShow[]): FlashShow[] => {
+  return shows.map(show => ({
+    id: show.id,
+    date: formatDateForFlash(show.date),
+    location: `${show.city}, ${show.state}`,
+    type: show.type,
     isActive: true
-  },
-  {
-    id: "2", 
-    date: "22 दिसंबर 2024",
-    location: "दिल्ली",
-    type: "स्टैंड-अप शो",
-    isActive: true
-  },
-  {
-    id: "3",
-    date: "5 जनवरी 2025",
-    location: "पुणे, महाराष्ट्र", 
-    type: "हास्य कार्यक्रम",
-    isActive: true
-  }
-];
+  }));
+};
+
+// Generate flash shows from the main upcoming shows data
+export const flashShows: FlashShow[] = convertToFlashShows(upcomingShows);
 
 // Function to get active shows for flash strip
 export const getActiveFlashShows = (): FlashShow[] => {

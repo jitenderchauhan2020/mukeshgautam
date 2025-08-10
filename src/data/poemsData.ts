@@ -4,19 +4,58 @@ export interface HindiPoem {
   id: string;
   title: string;
   titleEnglish?: string;
-  category: "व्यंग्य" | "राजनीतिक" | "सामाजिक" | "हास्य" | "पर्यावरण";
-  categoryEnglish: "Satire" | "Political" | "Social" | "Humor" | "Environment";
+  category: "व्यंग्य" | "राजनीतिक" | "सामाजिक" | "हास्य" | "पर्यावरण" | "प्रेम";
+  categoryEnglish: "Satire" | "Political" | "Social" | "Humor" | "Environment" | "Love";
   excerpt: string[];
   fullPoem: string[];
   date: string;
   featured?: boolean;
   image?: string;
-  emotion: "satirical" | "humorous" | "critical" | "thoughtful" | "witty";
+  emotion: "satirical" | "humorous" | "critical" | "thoughtful" | "witty" | "romantic";
+  author: string;
 }
 
 export const hindiPoems: HindiPoem[] = [
   {
     id: "1",
+    title: "प्रेम में खोया व्यक्ति",
+    titleEnglish: "A Person Lost in Love",
+    category: "प्रेम",
+    categoryEnglish: "Love",
+    excerpt: [
+      "किसी के प्रेम में खोए व्यक्ति को",
+      "उन्होने डाल दिया जेल में!",
+      "परन्तु-",
+      "वह वहां भी बात-बेबात हंस रहा था..."
+    ],
+    fullPoem: [
+      "किसी के प्रेम में खोए व्यक्ति को",
+      "उन्होने डाल दिया जेल में!",
+      "परन्तु-",
+      "वह वहां भी",
+      "बात-बेबात हंस रहा था,",
+      "दिवार पर बना रहा था चित्र,",
+      "पेड़ की जड़ों में",
+      "डाल रहा था पानी,",
+      "बातें कर रहा था चिड़ियों से",
+      "दौड़ रहा था तितलियों के पीछे",
+      "गुनगुना रहा था गज़ल",
+      "वह जानता था",
+      "जिंदगी एक उत्सव है",
+      "परन्तु-",
+      "क्या करें",
+      "प्रेम से अनभिज्ञ लोग",
+      "उसे समझते है",
+      "'पागल' !"
+    ],
+    date: "2024-01-15",
+    featured: true,
+    image: "/images/poems/prem-mein-khoya.jpg",
+    emotion: "romantic",
+    author: "Dr. Mukesh Gautam"
+  },
+  {
+    id: "2",
     title: "फिश तिरंगी",
     titleEnglish: "Fish Tricolor",
     category: "व्यंग्य",
@@ -63,13 +102,15 @@ export const hindiPoems: HindiPoem[] = [
       "ऑर्डर दिया स्टार्टर में",
       "\"फिश तिरंगी\" लाने का !"
     ],
-    date: "2024-01-15",
+    date: "2024-02-15",
     featured: true,
     image: "/images/poems/fish-tirangi.jpg",
-    emotion: "satirical"
+    emotion: "satirical",
+    author: "Dr. Mukesh Gautam"
+
   },
   {
-    id: "2",
+    id: "3",
     title: "सेक्यूलर नेता",
     titleEnglish: "Secular Leader",
     category: "राजनीतिक",
@@ -105,115 +146,18 @@ export const hindiPoems: HindiPoem[] = [
       "मुझे साफ दिखाई दे रहा था",
       "उसका ही चेहरा !"
     ],
-    date: "2024-02-10",
+    date: "2024-03-10",
     featured: true,
     image: "/images/poems/secular-neta.jpg",
-    emotion: "critical"
-  },
-  {
-    id: "3",
-    title: "हास्य की दुनिया",
-    titleEnglish: "World of Humor",
-    category: "हास्य",
-    categoryEnglish: "Humor",
-    excerpt: [
-      "हंसी में छुपा है जीवन का सार,",
-      "व्यंग्य से मिलती है समझ की धार,",
-      "मंच पर खड़ा होकर जब मैं कहता,",
-      "हर दुख भूल जाता है संसार।"
-    ],
-    fullPoem: [
-      "हंसी में छुपा है जीवन का सार,",
-      "व्यंग्य से मिलती है समझ की धार,",
-      "मंच पर खड़ा होकर जब मैं कहता,",
-      "हर दुख भूल जाता है संसार।",
-      "",
-      "तीस साल से मंच पर आता हूं,",
-      "लोगों के चेहरों पर मुस्कान लाता हूं,",
-      "कॉमेडी के जरिए सच्चाई दिखाता हूं,",
-      "समाज के आईने में छवि दिखाता हूं।",
-      "",
-      "टीवी के पर्दे पर भी छाया हूं,",
-      "हर घर में खुशी का संदेश लाया हूं,",
-      "हास्य कवि का यही है धर्म,",
-      "हंसाना ही मेरा परम कर्म।"
-    ],
-    date: "2024-03-05",
-    featured: false,
-    image: "/images/poems/hasya-duniya.jpg",
-    emotion: "humorous"
-  },
-  {
-    id: "4",
-    title: "पर्यावरण प्रेमी",
-    titleEnglish: "Environment Lover",
-    category: "पर्यावरण",
-    categoryEnglish: "Environment",
-    excerpt: [
-      "बयालीस हजार पेड़ लगाए हैं,",
-      "धरती मां को हरा-भरा बनाए हैं,",
-      "कविता के साथ-साथ ये काम भी करता,",
-      "प्रकृति की सेवा में जीवन गुजारा है।"
-    ],
-    fullPoem: [
-      "बयालीस हजार पेड़ लगाए हैं,",
-      "धरती मां को हरा-भरा बनाए हैं,",
-      "कविता के साथ-साथ ये काम भी करता,",
-      "प्रकृति की सेवा में जीवन गुजारा है।",
-      "",
-      "हर वृक्ष एक उम्मीद की तरह,",
-      "हर पत्ता एक खुशी की तरह,",
-      "ऑक्सीजन देता है ये संसार को,",
-      "जीवन देता है हर जीव को।",
-      "",
-      "आओ मिलकर पेड़ लगाएं,",
-      "धरती को स्वर्ग बनाएं,",
-      "हास्य कवि का ये भी संदेश,",
-      "बचाना है अपना ये देश।"
-    ],
-    date: "2024-04-20",
-    featured: false,
-    image: "/images/poems/environment.jpg",
-    emotion: "thoughtful"
-  },
-  {
-    id: "5",
-    title: "मंच का राजा",
-    titleEnglish: "King of Stage",
-    category: "सामाजिक",
-    categoryEnglish: "Social",
-    excerpt: [
-      "मंच पर आते ही छा जाता हूं,",
-      "हर दिल में उमंग लाता हूं,",
-      "माइक थामकर जब बोलता हूं,",
-      "तालियों की गर्जना सुनाई देती है।"
-    ],
-    fullPoem: [
-      "मंच पर आते ही छा जाता हूं,",
-      "हर दिल में उमंग लाता हूं,",
-      "माइक थामकर जब बोलता हूं,",
-      "तालियों की गर्जना सुनाई देती है।",
-      "",
-      "कवि सम्मेलन हो या हास्य कार्यक्रम,",
-      "हर जगह मेरा स्वागत है,",
-      "लोग पूछते हैं कब आओगे फिर,",
-      "मेरी हंसी का इंतज़ार है।",
-      "",
-      "देश-विदेश में नाम कमाया,",
-      "हिंदी कविता का मान बढ़ाया,",
-      "हास्य और व्यंग्य की ये दुनिया,",
-      "मेरी मेहनत का फल है।"
-    ],
-    date: "2024-05-15",
-    featured: false,
-    image: "/images/poems/manch-raja.jpg",
-    emotion: "witty"
+    emotion: "critical",
+    author: "Dr. Mukesh Gautam"
   }
 ];
 
 // Poem categories for filtering
 export const poemCategories = [
   { name: "सभी", nameEn: "All", value: "all" },
+  { name: "प्रेम", nameEn: "Love", value: "प्रेम" },
   { name: "व्यंग्य", nameEn: "Satire", value: "व्यंग्य" },
   { name: "राजनीतिक", nameEn: "Political", value: "राजनीतिक" },
   { name: "सामाजिक", nameEn: "Social", value: "सामाजिक" },
@@ -234,51 +178,223 @@ export interface GalleryImage {
 export const galleryImages: GalleryImage[] = [
   {
     id: "1",
-    src: "/images/gallery/stage-performance-1.jpg",
+    src: "/images/Gallery/IMG-20250809-WA0008.jpg",
     alt: "Dr. Mukesh Gautam performing on stage",
     title: "मंच प्रस्तुति",
     description: "हास्य कवि सम्मेलन में प्रस्तुति",
-    category: "stage-shows"
+    category: "stage-shows",
+    // orientation: "landscape"
   },
   {
     id: "2",
-    src: "/images/gallery/tv-show-appearance.jpg",
+    src: "/images/Gallery/IMG-20250809-WA0010.jpg",
     alt: "TV show appearance",
     title: "टीवी कार्यक्रम",
     description: "प्रसिद्ध हास्य शो में भागीदारी",
-    category: "tv-shows"
+    category: "tv-shows",
+    // orientation: "landscape"
   },
   {
     id: "3",
-    src: "/images/gallery/award-ceremony.jpg",
+    src: "/images/Gallery/IMG-20250809-WA0015.jpg",
     alt: "Award ceremony",
     title: "पुरस्कार समारोह",
     description: "राष्ट्रीय मेदिनी पुरस्कार प्राप्त करते हुए",
-    category: "awards"
+    category: "awards",
+    // orientation: "landscape"
   },
   {
     id: "4",
-    src: "/images/gallery/tree-plantation.jpg",
+    src: "/images/Gallery/IMG-20250809-WA0020.jpg",
     alt: "Tree plantation drive",
     title: "वृक्षारोपण",
     description: "पर्यावरण सेवा - वृक्षारोपण कार्यक्रम",
-    category: "events"
+    category: "events",
+    // orientation: "portrait"
   },
   {
     id: "5",
-    src: "/images/gallery/book-launch.jpg",
+    src: "/images/Gallery/IMG-20250809-WA0025.jpg",
     alt: "Book launch event",
     title: "पुस्तक विमोचन",
     description: "कविता संग्रह का विमोचन समारोह",
-    category: "events"
+    category: "events",
+    // orientation: "landscape"
   },
   {
     id: "6",
-    src: "/images/gallery/family-photo.jpg",
+    src: "/images/Gallery/IMG-20250809-WA0030.jpg",
     alt: "Family photograph",
     title: "पारिवारिक चित्र",
     description: "परिवार के साथ",
-    category: "personal"
+    category: "personal",
+    // orientation: "portrait"
+  },
+  {
+    id: "7",
+    src: "/images/Gallery/IMG-20250809-WA0035.jpg",
+    alt: "Stage performance",
+    title: "मंचीय कलाकारी",
+    description: "हास्य व्यंग्य प्रस्तुति",
+    category: "stage-shows",
+    // orientation: "landscape"
+  },
+  {
+    id: "8",
+    src: "/images/Gallery/IMG-20250809-WA0040.jpg",
+    alt: "Literary event",
+    title: "साहित्यिक गोष्ठी",
+    description: "कविता पाठ कार्यक्रम",
+    category: "events",
+    // orientation: "square"
+  },
+  {
+    id: "9",
+    src: "/images/Gallery/IMG-20250809-WA0045.jpg",
+    alt: "Media interview",
+    title: "मीडिया साक्षात्कार",
+    description: "प्रेस इंटरव्यू",
+    category: "tv-shows",
+    // orientation: "portrait"
+  },
+  {
+    id: "10",
+    src: "/images/Gallery/IMG-20250809-WA0050.jpg",
+    alt: "Cultural program",
+    title: "सांस्कृतिक कार्यक्रम",
+    description: "त्योहारी समारोह में सहभागिता",
+    category: "events",
+    // orientation: "landscape"
+  },
+  {
+    id: "11",
+    src: "/images/Gallery/IMG-20250809-WA0055.jpg",
+    alt: "Poetry recitation",
+    title: "काव्य पाठ",
+    description: "कविता सुनाते हुए",
+    category: "stage-shows",
+    // orientation: "portrait"
+  },
+  {
+    id: "12",
+    src: "/images/Gallery/IMG-20250809-WA0060.jpg",
+    alt: "Award ceremony",
+    title: "सम्मान समारोह",
+    description: "साहित्य सम्मान प्राप्त करते हुए",
+    category: "awards",
+    // orientation: "square"
+  },
+  {
+    id: "13",
+    src: "/images/Gallery/IMG-20250809-WA0065.jpg",
+    alt: "Stage show",
+    title: "मंच कार्यक्रम",
+    description: "हास्य कवि सम्मेलन",
+    category: "stage-shows",
+    // orientation: "landscape"
+  },
+  {
+    id: "14",
+    src: "/images/Gallery/IMG-20250809-WA0070.jpg",
+    alt: "Event participation",
+    title: "कार्यक्रम में भागीदारी",
+    description: "सामुदायिक कार्यक्रम",
+    category: "events",
+    // orientation: "portrait"
+  },
+  {
+    id: "15",
+    src: "/images/Gallery/IMG-20250809-WA0075.jpg",
+    alt: "Literary gathering",
+    title: "साहित्यिक मेल-जोल",
+    description: "कवि मित्रों के साथ",
+    category: "events",
+    // orientation: "landscape"
+  },
+  {
+    id: "16",
+    src: "/images/Gallery/IMG-20250809-WA0080.jpg",
+    alt: "Performance",
+    title: "कलात्मक प्रस्तुति",
+    description: "मंच पर प्रदर्शन",
+    category: "stage-shows",
+    // orientation: "square"
+  },
+  {
+    id: "17",
+    src: "/images/Gallery/IMG-20250809-WA0085.jpg",
+    alt: "Social event",
+    title: "सामाजिक कार्यक्रम",
+    description: "समुदायिक सभा में",
+    category: "events",
+    // orientation: "portrait"
+  },
+  {
+    id: "18",
+    src: "/images/Gallery/IMG-20250809-WA0090.jpg",
+    alt: "Media appearance",
+    title: "मीडिया में उपस्थिति",
+    description: "टेलीविजन साक्षात्कार",
+    category: "tv-shows",
+    // orientation: "landscape"
+  },
+  {
+    id: "19",
+    src: "/images/Gallery/IMG-20250809-WA0095.jpg",
+    alt: "Achievement ceremony",
+    title: "उपलब्धि समारोह",
+    description: "विशेष सम्मान प्राप्त करते हुए",
+    category: "awards",
+    // orientation: "portrait"
+  },
+  {
+    id: "20",
+    src: "/images/Gallery/IMG-20250809-WA0100.jpg",
+    alt: "Personal moment",
+    title: "व्यक्तिगत क्षण",
+    description: "निजी पलों की तस्वीर",
+    category: "personal",
+    // orientation: "square"
+  },
+  {
+    id: "21",
+    src: "/images/Gallery/IMG-20250809-WA0105.jpg",
+    alt: "Stage performance",
+    title: "मंच प्रदर्शन",
+    description: "कलाकारों के साथ मंच पर",
+    category: "stage-shows"
+  },
+  {
+    id: "22",
+    src: "/images/Gallery/IMG-20250809-WA0110.jpg",
+    alt: "Literary meet",
+    title: "साहित्यिक मिलन",
+    description: "लेखकों के साथ चर्चा",
+    category: "events"
+  },
+  {
+    id: "23",
+    src: "/images/Gallery/IMG-20250809-WA0115.jpg",
+    alt: "TV interview",
+    title: "टीवी साक्षात्कार",
+    description: "न्यूज़ चैनल पर बातचीत",
+    category: "tv-shows"
+  },
+  {
+    id: "24",
+    src: "/images/Gallery/IMG-20250809-WA0120.jpg",
+    alt: "Award function",
+    title: "पुरस्कार कार्यक्रम",
+    description: "सम्मान प्राप्त करते हुए",
+    category: "awards"
+  },
+  {
+    id: "25",
+    src: "/images/Gallery/IMG-20250809-WA0125.jpg",
+    alt: "Poetry session",
+    title: "कविता सत्र",
+    description: "काव्य गोष्ठी में भाग लेते हुए",
+    category: "events"
   }
 ];
 
@@ -291,7 +407,6 @@ export interface UpcomingShow {
   venue: string;
   city: string;
   state: string;
-  ticketLink?: string;
   description: string;
   type: "कवि सम्मेलन" | "हास्य कार्यक्रम" | "टीवी शो" | "निजी कार्यक्रम";
 }
@@ -299,24 +414,46 @@ export interface UpcomingShow {
 export const upcomingShows: UpcomingShow[] = [
   {
     id: "1",
-    title: "हास्य कवि सम्मेलन",
-    date: "2024-12-15",
-    time: "शाम 7:00 बजे",
-    venue: "इंदिरा गांधी सभागार",
-    city: "मुंबई",
-    state: "महाराष्ट्र",
-    description: "प्रसिद्ध हास्य कवियों के साथ एक शानदार कार्यक्रम",
+    title: "Grand Poetry Convention 2025",
+    date: "2025-09-15",
+    time: "7:00 PM",
+    venue: "Jawaharlal Nehru Auditorium",
+    city: "Lucknow",
+    state: "Uttar Pradesh",
+    description: "उत्तर प्रदेश के प्रसिद्ध हास्य कवियों के साथ एक भव्य साहित्यिक संध्या। डॉ. मुकेश गौतम के साथ अन्य प्रतिष्ठित कलाकारों की अनूठी प्रस्तुति।",
     type: "कवि सम्मेलन"
   },
   {
     id: "2", 
-    title: "स्टैंड-अप कॉमेडी शो",
-    date: "2024-12-22",
-    time: "रात 8:00 बजे",
-    venue: "कमल थिएटर",
-    city: "दिल्ली",
-    state: "दिल्ली",
-    description: "एक रात हंसी और मनोरंजन के साथ",
+    title: "Comedy Evening - Delhi",
+    date: "2025-09-25",
+    time: "8:00 PM",
+    venue: "Kamal Theatre",
+    city: "New Delhi",
+    state: "Delhi",
+    description: "राजधानी दिल्ली में एक यादगार हास्य कार्यक्रम। व्यंग्य और हास्य से भरपूर शाम जो आपको हंसने पर मजबूर कर देगी।",
     type: "हास्य कार्यक्रम"
+  },
+  {
+    id: "3",
+    title: "Corporate Event - Mumbai",
+    date: "2025-10-08",
+    time: "6:30 PM",
+    venue: "Hotel Taj Presidency",
+    city: "Mumbai",
+    state: "Maharashtra",
+    description: "बिजनेस समुदाय के लिए विशेष हास्य कार्यक्रम। कॉर्पोरेट जगत की समसामयिक घटनाओं पर आधारित मनोरंजक प्रस्तुति।",
+    type: "निजी कार्यक्रम"
+  },
+  {
+    id: "4",
+    title: "Diwali Special Poetry Convention",
+    date: "2025-10-20",
+    time: "7:30 PM",
+    venue: "Shaheed Smarak Bhawan",
+    city: "Bhopal",
+    state: "Madhya Pradesh",
+    description: "दीपावली के पावन अवसर पर आयोजित विशेष काव्य संध्या। पारंपरिक त्योहारी माहौल में हास्य और व्यंग्य की अनूठी प्रस्तुति।",
+    type: "कवि सम्मेलन"
   }
 ];
