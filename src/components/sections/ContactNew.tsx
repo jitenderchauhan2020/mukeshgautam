@@ -260,181 +260,219 @@ const ContactNew = () => {
             </div>
 
             {/* Contact Form */}
-            <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-              <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6 md:p-8 shadow-lg border border-gray-200">
-                <h3 className="text-xl md:text-2xl font-bold text-[#113F67] mb-4 ">
-                  Send message
-                </h3>
+            <div
+  className={`transition-all duration-1000 delay-400 ${
+    isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+  }`}
+>
+  <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6 md:p-8 shadow-lg border border-gray-200">
+    <h3 className="text-xl md:text-2xl font-bold text-[#113F67] mb-4">
+      Send message
+    </h3>
 
-                {/* Hidden form for Netlify detection */}
-                <form name="contact" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
-                  <input type="text" name="name" />
-                  <input type="text" name="contact" />
-                  <input type="email" name="email" />
-                  <textarea name="message"></textarea>
-                </form>
+    <form
+      onSubmit={handleSubmit}
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      className="space-y-5 md:space-y-4"
+    >
+      {/* Netlify hidden field */}
+      <input type="hidden" name="form-name" value="contact" />
 
-                <form onSubmit={handleSubmit} className="space-y-5 md:space-y-4" data-netlify="true" name="contact">
-                  {/* Netlify honeypot field */}
-                  <input type="hidden" name="form-name" value="contact" />
-                  
-                  {/* Name Field */}
-                  <div>
-                    <label htmlFor="name" className="block text-sm md:text-sm font-semibold text-[#113F67] mb-2 hindi-text">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className={`w-full px-4 py-4 md:py-3 border-2 rounded-xl md:rounded-lg focus:ring-2 focus:ring-[#34699A] focus:border-[#34699A] transition-colors text-base md:text-sm ${
-                        errors.name 
-                          ? 'border-red-300 focus:border-red-500 focus:ring-red-200' 
-                          : 'border-gray-200 hover:border-gray-300'
-                      }`}
-                      placeholder="अपना पूरा नाम दर्ज करें"
-                    />
-                    {errors.name && (
-                      <p className="mt-2 text-sm text-red-600 flex items-center">
-                        <ExclamationCircleIcon className="h-4 w-4 mr-1 flex-shrink-0" />
-                        {errors.name}
-                      </p>
-                    )}
-                  </div>
+      {/* Honeypot field (hidden from users but parsed by Netlify) */}
+      <p className="hidden">
+        <label>
+          Don’t fill this out: <input name="bot-field" />
+        </label>
+      </p>
 
-                  {/* Contact Field */}
-                  <div>
-                    <label htmlFor="contact" className="block text-sm md:text-sm font-semibold text-[#113F67] mb-2 hindi-text">
-                      Contact Number *
-                    </label>
-                    <input
-                      type="tel"
-                      id="contact"
-                      name="contact"
-                      value={formData.contact}
-                      onChange={handleInputChange}
-                      className={`w-full px-4 py-4 md:py-3 border-2 rounded-xl md:rounded-lg focus:ring-2 focus:ring-[#34699A] focus:border-[#34699A] transition-colors text-base md:text-sm ${
-                        errors.contact 
-                          ? 'border-red-300 focus:border-red-500 focus:ring-red-200' 
-                          : 'border-gray-200 hover:border-gray-300'
-                      }`}
-                      placeholder="+91 98765 43210"
-                    />
-                    {errors.contact && (
-                      <p className="mt-2 text-sm text-red-600 flex items-center">
-                        <ExclamationCircleIcon className="h-4 w-4 mr-1 flex-shrink-0" />
-                        {errors.contact}
-                      </p>
-                    )}
-                  </div>
+      {/* Name Field */}
+      <div>
+        <label
+          htmlFor="name"
+          className="block text-sm md:text-sm font-semibold text-[#113F67] mb-2 hindi-text"
+        >
+          Full Name *
+        </label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value={formData.name}
+          onChange={handleInputChange}
+          className={`w-full px-4 py-4 md:py-3 border-2 rounded-xl md:rounded-lg focus:ring-2 focus:ring-[#34699A] focus:border-[#34699A] transition-colors text-base md:text-sm ${
+            errors.name
+              ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
+              : 'border-gray-200 hover:border-gray-300'
+          }`}
+          placeholder="अपना पूरा नाम दर्ज करें"
+        />
+        {errors.name && (
+          <p className="mt-2 text-sm text-red-600 flex items-center">
+            <ExclamationCircleIcon className="h-4 w-4 mr-1 flex-shrink-0" />
+            {errors.name}
+          </p>
+        )}
+      </div>
 
-                  {/* Email Field */}
-                  <div>
-                    <label htmlFor="email" className="block text-sm md:text-sm font-semibold text-[#113F67] mb-2 hindi-text">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className={`w-full px-4 py-4 md:py-3 border-2 rounded-xl md:rounded-lg focus:ring-2 focus:ring-[#34699A] focus:border-[#34699A] transition-colors text-base md:text-sm ${
-                        errors.email 
-                          ? 'border-red-300 focus:border-red-500 focus:ring-red-200' 
-                          : 'border-gray-200 hover:border-gray-300'
-                      }`}
-                      placeholder="your.email@example.com"
-                    />
-                    {errors.email && (
-                      <p className="mt-2 text-sm text-red-600 flex items-center">
-                        <ExclamationCircleIcon className="h-4 w-4 mr-1 flex-shrink-0" />
-                        {errors.email}
-                      </p>
-                    )}
-                  </div>
+      {/* Contact Field */}
+      <div>
+        <label
+          htmlFor="contact"
+          className="block text-sm md:text-sm font-semibold text-[#113F67] mb-2 hindi-text"
+        >
+          Contact Number *
+        </label>
+        <input
+          type="tel"
+          id="contact"
+          name="contact"
+          value={formData.contact}
+          onChange={handleInputChange}
+          className={`w-full px-4 py-4 md:py-3 border-2 rounded-xl md:rounded-lg focus:ring-2 focus:ring-[#34699A] focus:border-[#34699A] transition-colors text-base md:text-sm ${
+            errors.contact
+              ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
+              : 'border-gray-200 hover:border-gray-300'
+          }`}
+          placeholder="+91 98765 43210"
+        />
+        {errors.contact && (
+          <p className="mt-2 text-sm text-red-600 flex items-center">
+            <ExclamationCircleIcon className="h-4 w-4 mr-1 flex-shrink-0" />
+            {errors.contact}
+          </p>
+        )}
+      </div>
 
-                  {/* Message Field */}
-                  <div>
-                    <label htmlFor="message" className="block text-sm md:text-sm font-semibold text-[#113F67] mb-2 hindi-text">
-                      Message *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      rows={6}
-                      className={`w-full px-4 py-4 md:py-3 border-2 rounded-xl md:rounded-lg focus:ring-2 focus:ring-[#34699A] focus:border-[#34699A] transition-colors resize-none text-base md:text-sm ${
-                        errors.message 
-                          ? 'border-red-300 focus:border-red-500 focus:ring-red-200' 
-                          : 'border-gray-200 hover:border-gray-300'
-                      }`}
-                      placeholder="अपने कार्यक्रम, पूछताछ या बस हैलो के बारे में बताएं..."
-                    />
-                    {errors.message && (
-                      <p className="mt-2 text-sm text-red-600 flex items-center">
-                        <ExclamationCircleIcon className="h-4 w-4 mr-1 flex-shrink-0" />
-                        {errors.message}
-                      </p>
-                    )}
-                  </div>
+      {/* Email Field */}
+      <div>
+        <label
+          htmlFor="email"
+          className="block text-sm md:text-sm font-semibold text-[#113F67] mb-2 hindi-text"
+        >
+          Email Address *
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleInputChange}
+          className={`w-full px-4 py-4 md:py-3 border-2 rounded-xl md:rounded-lg focus:ring-2 focus:ring-[#34699A] focus:border-[#34699A] transition-colors text-base md:text-sm ${
+            errors.email
+              ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
+              : 'border-gray-200 hover:border-gray-300'
+          }`}
+          placeholder="your.email@example.com"
+        />
+        {errors.email && (
+          <p className="mt-2 text-sm text-red-600 flex items-center">
+            <ExclamationCircleIcon className="h-4 w-4 mr-1 flex-shrink-0" />
+            {errors.email}
+          </p>
+        )}
+      </div>
 
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className={`w-full bg-[#34699A] hover:bg-[#113F67] active:bg-[#113F67] text-white font-semibold py-4 md:py-3 px-6 rounded-xl md:rounded-lg transition-all duration-200 flex items-center justify-center text-base md:text-sm hindi-text touch-manipulation min-h-[48px] ${
-                      isSubmitting 
-                        ? 'opacity-70 cursor-not-allowed' 
-                        : 'hover:shadow-lg transform hover:-translate-y-0.5 active:scale-95'
-                    }`}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                        भेजा जा रहा है...
-                      </>
-                    ) : (
-                      <>
-                        <PaperAirplaneIcon className="h-5 w-5 mr-2" />
-                        Send Message
-                      </>
-                    )}
-                  </button>
+      {/* Message Field */}
+      <div>
+        <label
+          htmlFor="message"
+          className="block text-sm md:text-sm font-semibold text-[#113F67] mb-2 hindi-text"
+        >
+          Message *
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleInputChange}
+          rows={6}
+          className={`w-full px-4 py-4 md:py-3 border-2 rounded-xl md:rounded-lg focus:ring-2 focus:ring-[#34699A] focus:border-[#34699A] transition-colors resize-none text-base md:text-sm ${
+            errors.message
+              ? 'border-red-300 focus:border-red-500 focus:ring-red-200'
+              : 'border-gray-200 hover:border-gray-300'
+          }`}
+          placeholder="अपने कार्यक्रम, पूछताछ या बस हैलो के बारे में बताएं..."
+        />
+        {errors.message && (
+          <p className="mt-2 text-sm text-red-600 flex items-center">
+            <ExclamationCircleIcon className="h-4 w-4 mr-1 flex-shrink-0" />
+            {errors.message}
+          </p>
+        )}
+      </div>
 
-                  {/* Status Messages */}
-                  {submitStatus === 'success' && (
-                    <div className="bg-green-50 border border-green-200 rounded-lg p-3">
-                      <div className="flex items-center text-green-800">
-                        <CheckCircleIcon className="h-4 w-4 mr-2" />
-                        <span className="font-medium">Message sent successfully!</span>
-                      </div>
-                      <p className="mt-1 text-green-700 text-sm">
-                        Thank you for reaching out. I'll get back to you as soon as possible.
-                      </p>
-                    </div>
-                  )}
+      {/* Submit Button */}
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className={`w-full bg-[#34699A] hover:bg-[#113F67] active:bg-[#113F67] text-white font-semibold py-4 md:py-3 px-6 rounded-xl md:rounded-lg transition-all duration-200 flex items-center justify-center text-base md:text-sm hindi-text touch-manipulation min-h-[48px] ${
+          isSubmitting
+            ? 'opacity-70 cursor-not-allowed'
+            : 'hover:shadow-lg transform hover:-translate-y-0.5 active:scale-95'
+        }`}
+      >
+        {isSubmitting ? (
+          <>
+            <svg
+              className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
+            भेजा जा रहा है...
+          </>
+        ) : (
+          <>
+            <PaperAirplaneIcon className="h-5 w-5 mr-2" />
+            Send Message
+          </>
+        )}
+      </button>
 
-                  {submitStatus === 'error' && (
-                    <div className="bg-red-50 border border-red-200 rounded-lg p-3">
-                      <div className="flex items-center text-red-800">
-                        <ExclamationCircleIcon className="h-4 w-4 mr-2" />
-                        <span className="font-medium">Failed to send message</span>
-                      </div>
-                      <p className="mt-1 text-red-700 text-sm">
-                        Please try again or contact me directly via email or phone.
-                      </p>
-                    </div>
-                  )}
-                </form>
-              </div>
-            </div>
+      {/* Status Messages */}
+      {submitStatus === 'success' && (
+        <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+          <div className="flex items-center text-green-800">
+            <CheckCircleIcon className="h-4 w-4 mr-2" />
+            <span className="font-medium">Message sent successfully!</span>
+          </div>
+          <p className="mt-1 text-green-700 text-sm">
+            Thank you for reaching out. I'll get back to you as soon as possible.
+          </p>
+        </div>
+      )}
+
+      {submitStatus === 'error' && (
+        <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+          <div className="flex items-center text-red-800">
+            <ExclamationCircleIcon className="h-4 w-4 mr-2" />
+            <span className="font-medium">Failed to send message</span>
+          </div>
+          <p className="mt-1 text-red-700 text-sm">
+            Please try again or contact me directly via email or phone.
+          </p>
+        </div>
+      )}
+    </form>
+  </div>
+</div>
+
           </div>
         </div>
       </div>
