@@ -13,22 +13,19 @@ const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const heroImages = [
-    '/images/Hero sections/WhatsApp Image 2025-08-08 at 7.07.17 PM.jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-08 at 7.07.44 PM.jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-08 at 7.07.45 PM.jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-08 at 7.07.45 PM (1).jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-08 at 7.07.45 PM (2).jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-08 at 10.21.35 PM.jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-08 at 10.21.43 PM.jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-08 at 10.36.01 PM.jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-08 at 10.36.02 PM.jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-08 at 10.36.02 PM (1).jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-08 at 10.37.27 PM.jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-08 at 10.37.28 PM.jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-08 at 10.38.10 PM.jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-08 at 10.38.14 PM.jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-08 at 10.41.21 PM.jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-08 at 10.41.21 PM (1).jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.23 PM (1).jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.23 PM.jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.24 PM (1).jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.24 PM (2).jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.24 PM.jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.25 PM.jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.26 PM (1).jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.26 PM.jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.27 PM (1).jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.27 PM (2).jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.27 PM.jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.28 PM (1).jpeg',
+    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.28 PM.jpeg'
   ];
 
   useEffect(() => {

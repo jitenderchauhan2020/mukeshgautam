@@ -25,16 +25,16 @@ export const siteConfig = {
     youtube: "https://youtube.com/@mukeshgautamofficial?si=gXlrIhpyf_ZlbLB0",
     // twitter: "https://twitter.com/drmukeshgautam",
     email: "contact@drmukeshgautam.com",
-    phone: "+91 98765 43210",
-    whatsapp: "+91 98765 43210"  // Added for preheader
+    phone: "+91 96195 82408",
+    whatsapp: "+91 96195 82408"  // Added for preheader
   },
   
   // Navigation items - All in Hindi
   navigation: [
     { name: "Home", nameEn: "Home", href: "#home" },
     { name: "About", nameEn: "About", href: "#about" },
+    { name: "Publications", nameEn: "Publications", href: "#rachnaye" },
     { name: "Gallery", nameEn: "Gallery", href: "#gallery" },
-    { name: "Blogs", nameEn: "Blog", href: "#blog" },
     { name: "Upcoming Shows", nameEn: "Upcoming Shows", href: "#upcoming-shows" },
     { name: "Contact", nameEn: "Contact", href: "#contact" }
   ]
@@ -190,24 +190,24 @@ export const featuredVideos = [
     title: "वाह भाई वाह",
     channel: "Shemaroo TV",
     videoUrl: "https://youtu.be/EQlPXF-qffs?si=2znKQNIo3gZLAvYO",
-    thumbnail: "https://img.youtube.com/vi/EQlPXF-qffs/maxresdefault.jpg"
+    thumbnail: "https://img.youtube.com/vi/EQlPXF-qffs/hqdefault.jpg"
   },
   {
     title: "वाह वाह क्या बात है",
     channel: "SAB TV", 
     videoUrl: "https://youtu.be/buirOn1NfFU?si=uEHzewGL5K3k2XfE",
-    thumbnail: "https://img.youtube.com/vi/buirOn1NfFU/maxresdefault.jpg"
+    thumbnail: "https://img.youtube.com/vi/buirOn1NfFU/hqdefault.jpg"
   },
   {
     title: "बहुत खूब",
     channel: "Sony TV",
     videoUrl: "https://youtu.be/Oz8w47ISFqc?si=n2hvWm5VjbPY-kKv",
-    thumbnail: "https://img.youtube.com/vi/Oz8w47ISFqc/maxresdefault.jpg"
+    thumbnail: "https://img.youtube.com/vi/Oz8w47ISFqc/hqdefault.jpg"
   },
   {
     title: "Once More",
     channel: "Doordarshan",
     videoUrl: "https://youtu.be/hE4NuoFIYCk?si=LM8ti1aZGPEIU3_g",
-    thumbnail: "https://img.youtube.com/vi/hE4NuoFIYCk/maxresdefault.jpg"
+    thumbnail: "https://img.youtube.com/vi/hE4NuoFIYCk/hqdefault.jpg"
   }
 ];

@@ -4,8 +4,59 @@ import { useEffect, useState } from 'react';
 import { aboutData } from '@/data/siteData';
 import Image from 'next/image';
 
+// Newspaper images data
+const newspaperImages = [
+  {
+    id: 'news-1',
+    src: '/images/Newspapers/WhatsApp Image 2025-08-11 at 8.38.26 PM.jpeg',
+    title: 'समाचार पत्र में विशेष स्थान',
+    description: 'प्रसिद्ध दैनिक में कविता प्रकाशन',
+    alt: 'Newspaper Coverage 1'
+  },
+  {
+    id: 'news-2',
+    src: '/images/Newspapers/WhatsApp Image 2025-08-11 at 8.38.27 PM (1).jpeg',
+    title: 'साहित्यिक पुरस्कार समाचार',
+    description: 'पुरस्कार प्राप्ति की खबर',
+    alt: 'Newspaper Coverage 2'
+  },
+  {
+    id: 'news-3',
+    src: '/images/Newspapers/WhatsApp Image 2025-08-11 at 8.38.27 PM (2).jpeg',
+    title: 'टीवी शो की समीक्षा',
+    description: 'हास्य प्रस्तुति की चर्चा',
+    alt: 'Newspaper Coverage 3'
+  },
+  {
+    id: 'news-4',
+    src: '/images/Newspapers/WhatsApp Image 2025-08-11 at 8.38.27 PM.jpeg',
+    title: 'काव्य गोष्ठी रिपोर्ट',
+    description: 'कविता सम्मेलन का विवरण',
+    alt: 'Newspaper Coverage 4'
+  },
+  {
+    id: 'news-5',
+    src: '/images/Newspapers/WhatsApp Image 2025-08-11 at 8.38.28 PM.jpeg',
+    title: 'मीडिया में चर्चा',
+    description: 'व्यापक मीडिया कवरेज',
+    alt: 'Newspaper Coverage 5'
+  }
+];
+
+interface NewspaperImage {
+  id: string;
+  src: string;
+  title: string;
+  description: string;
+  alt: string;
+}
+
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<NewspaperImage | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
+  const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -23,6 +74,60 @@ const About = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Image loading handlers
+  const handleImageLoad = (imageId: string) => {
+    setLoadedImages(prev => new Set([...prev, imageId]));
+  };
+
+  const handleImageError = (imageId: string) => {
+    setFailedImages(prev => new Set([...prev, imageId]));
+    setLoadedImages(prev => new Set([...prev, imageId])); // Mark as loaded to hide spinner
+  };
+
+  // Check image loading status
+  const isImageLoaded = (imageId: string) => loadedImages.has(imageId);
+  const isImageFailed = (imageId: string) => failedImages.has(imageId);
+
+  // Open image in modal
+  const openImageModal = (image: NewspaperImage, index: number) => {
+    setSelectedImage(image);
+    setCurrentIndex(index);
+    document.body.style.overflow = 'hidden';
+  };
+
+  // Close modal
+  const closeImageModal = () => {
+    setSelectedImage(null);
+    document.body.style.overflow = 'unset';
+  };
+
+  // Navigate in modal
+  const goToNext = () => {
+    const nextIndex = (currentIndex + 1) % newspaperImages.length;
+    setCurrentIndex(nextIndex);
+    setSelectedImage(newspaperImages[nextIndex]);
+  };
+
+  const goToPrevious = () => {
+    const prevIndex = currentIndex === 0 ? newspaperImages.length - 1 : currentIndex - 1;
+    setCurrentIndex(prevIndex);
+    setSelectedImage(newspaperImages[prevIndex]);
+  };
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (!selectedImage) return;
+      
+      if (e.key === 'ArrowRight') goToNext();
+      if (e.key === 'ArrowLeft') goToPrevious();
+      if (e.key === 'Escape') closeImageModal();
+    };
+
+    document.addEventListener('keydown', handleKeyPress);
+    return () => document.removeEventListener('keydown', handleKeyPress);
+  }, [selectedImage, currentIndex]);
+
   const aboutImages = [
     '/images/About/IMG-20250809-WA0021.jpg',
     '/images/About/WhatsApp Image 2025-08-08 at 10.21.41 PM.jpeg',
@@ -33,6 +138,7 @@ const About = () => {
   ];
 
   return (
+    <>
     <section 
       id="about"
       className="section-padding bg-[#34699A] text-white relative overflow-hidden"
@@ -134,19 +240,107 @@ const About = () => {
                       </li>
                     ))}
                   </ul>
+
+                  {/* Newspaper Gallery Section */}
+                  <div className="mt-8 md:mt-10">
+                    <div className="flex items-center mb-4">
+                      <div className="w-10 h-10 bg-[#FDF5AA] rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                        <svg className="w-5 h-5 text-[#34699A]" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clipRule="evenodd" />
+                          <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V9a1 1 0 00-1-1h-1v1z" />
+                        </svg>
+                      </div>
+                      <h3 className="text-xl font-semibold text-[#FDF5AA] hindi-text">
+                        मीडिया कवरेज
+                      </h3>
+                    </div>
+                    
+                    {/* Newspaper Images Grid - Single Column Layout */}
+                    <div className="ml-13 grid grid-cols-1 gap-3 md:gap-4 mt-4">
+                      {newspaperImages.map((image, index) => (
+                        <div
+                          key={image.id}
+                          className={`group relative bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-xl border border-white/20`}
+                          style={{
+                            opacity: isVisible ? 1 : 0,
+                            transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                            transitionDelay: `${index * 100 + 1200}ms`
+                          }}
+                          onClick={() => openImageModal(image, index)}
+                        >
+                          {/* Image Container - Wider for single column */}
+                          <div className="relative w-full h-32 md:h-40 lg:h-48 overflow-hidden">
+                            {/* Loading Spinner */}
+                            {!isImageLoaded(image.id) && (
+                              <div className="absolute inset-0 bg-gradient-to-br from-[#FDF5AA] to-[#34699A] flex items-center justify-center z-20">
+                                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                              </div>
+                            )}
+                            
+                            {/* Error Placeholder */}
+                            {isImageFailed(image.id) && (
+                              <div className="absolute inset-0 bg-gradient-to-br from-[#FDF5AA] to-[#34699A] flex items-center justify-center z-10">
+                                <div className="text-center p-2">
+                                  <svg className="w-6 h-6 mx-auto mb-1 text-[#34699A]/50" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clipRule="evenodd" />
+                                  </svg>
+                                  <p className="text-[#34699A] text-xs hindi-text font-medium">
+                                    समाचार
+                                  </p>
+                                </div>
+                              </div>
+                            )}
+                            
+                            {/* Main Image */}
+                            <img
+                              src={image.src}
+                              alt={image.alt}
+                              className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${
+                                isImageLoaded(image.id) && !isImageFailed(image.id) ? 'opacity-100' : 'opacity-0'
+                              }`}
+                              onLoad={() => handleImageLoad(image.id)}
+                              onError={() => handleImageError(image.id)}
+                              loading="lazy"
+                              decoding="async"
+                            />
+                            
+                            {/* Hover Overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#34699A]/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                              <div className="p-3 text-white w-full">
+                                <h4 className="text-sm md:text-base font-semibold hindi-artistic truncate">
+                                  {image.title}
+                                </h4>
+                                <p className="text-xs md:text-sm hindi-text opacity-90 truncate">
+                                  {image.description}
+                                </p>
+                              </div>
+                            </div>
+
+                            {/* View Icon */}
+                            <div className="absolute top-2 right-2 bg-white/20 backdrop-blur-sm rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Images Section - Cleaner Layout */}
             <div className={`transition-all duration-1000 delay-400 order-1 lg:order-2 mb-8 lg:mb-0 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-              <div className="relative max-w-md mx-auto lg:max-w-none">
+              <div className="relative max-w-md mx-auto lg:max-w-lg">
                 
                 {/* Main Grid Layout - 6 images */}
                 <div className="space-y-4 md:space-y-6">
                   
-                  {/* Top Row - 2 images */}
-                  <div className="grid grid-cols-2 gap-4 md:gap-6">
+                  {/* Row 1 - 2 images on mobile, 1 on desktop */}
+                  <div className="grid grid-cols-2 lg:grid-cols-1 gap-4 md:gap-6">
                     <div 
                       className={`relative h-48 md:h-64 lg:h-72 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000`}
                       style={{ 
@@ -165,7 +359,27 @@ const About = () => {
                     </div>
 
                     <div 
-                      className={`relative h-48 md:h-64 lg:h-72 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000`}
+                      className={`relative h-48 md:h-64 lg:h-72 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000 lg:hidden`}
+                      style={{ 
+                        transform: isVisible ? 'rotate(3deg)' : 'rotate(7deg) scale(0.9)',
+                        opacity: isVisible ? 1 : 0,
+                        transitionDelay: '800ms'
+                      }}
+                    >
+                      <Image 
+                        src={aboutImages[1]} 
+                        alt="Dr. Mukesh Gautam in performance" 
+                        fill 
+                        className="object-cover hover:scale-105 transition-transform duration-500" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                    </div>
+                  </div>
+
+                  {/* Row 2 - Hidden on mobile (lg:hidden from previous), Show as single on desktop */}
+                  <div className="hidden lg:block">
+                    <div 
+                      className={`relative h-72 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000`}
                       style={{ 
                         transform: isVisible ? 'rotate(3deg)' : 'rotate(7deg) scale(0.9)',
                         opacity: isVisible ? 1 : 0,
@@ -182,8 +396,8 @@ const About = () => {
                     </div>
                   </div>
                   
-                  {/* Middle Row - 2 images */}
-                  <div className="grid grid-cols-2 gap-4 md:gap-6">
+                  {/* Row 3 - 2 images on mobile, 1 on desktop */}
+                  <div className="grid grid-cols-2 lg:grid-cols-1 gap-4 md:gap-6">
                     <div 
                       className={`relative h-40 md:h-52 lg:h-64 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000`}
                       style={{ 
@@ -202,7 +416,27 @@ const About = () => {
                     </div>
 
                     <div 
-                      className={`relative h-40 md:h-52 lg:h-64 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000`}
+                      className={`relative h-40 md:h-52 lg:h-64 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000 lg:hidden`}
+                      style={{ 
+                        transform: isVisible ? 'rotate(2deg)' : 'rotate(5deg) scale(0.95)',
+                        opacity: isVisible ? 1 : 0,
+                        transitionDelay: '1200ms'
+                      }}
+                    >
+                      <Image 
+                        src={aboutImages[3]} 
+                        alt="Dr. Mukesh Gautam award ceremony" 
+                        fill 
+                        className="object-cover hover:scale-105 transition-transform duration-500" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                    </div>
+                  </div>
+
+                  {/* Row 4 - Hidden on mobile, Show as single on desktop */}
+                  <div className="hidden lg:block">
+                    <div 
+                      className={`relative h-64 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000`}
                       style={{ 
                         transform: isVisible ? 'rotate(2deg)' : 'rotate(5deg) scale(0.95)',
                         opacity: isVisible ? 1 : 0,
@@ -219,8 +453,8 @@ const About = () => {
                     </div>
                   </div>
                   
-                  {/* Bottom Row - 2 images */}
-                  <div className="grid grid-cols-2 gap-4 md:gap-6">
+                  {/* Row 5 - 2 images on mobile, 1 on desktop */}
+                  <div className="grid grid-cols-2 lg:grid-cols-1 gap-4 md:gap-6">
                     <div 
                       className={`relative h-36 md:h-48 lg:h-56 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000`}
                       style={{ 
@@ -239,7 +473,27 @@ const About = () => {
                     </div>
 
                     <div 
-                      className={`relative h-36 md:h-48 lg:h-56 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000`}
+                      className={`relative h-36 md:h-48 lg:h-56 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000 lg:hidden`}
+                      style={{ 
+                        transform: isVisible ? 'rotate(-2deg)' : 'rotate(-5deg) scale(0.9)',
+                        opacity: isVisible ? 1 : 0,
+                        transitionDelay: '1600ms'
+                      }}
+                    >
+                      <Image 
+                        src={aboutImages[5]} 
+                        alt="Dr. Mukesh Gautam with fans" 
+                        fill 
+                        className="object-cover hover:scale-105 transition-transform duration-500" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                    </div>
+                  </div>
+
+                  {/* Row 6 - Hidden on mobile, Show as single on desktop */}
+                  <div className="hidden lg:block">
+                    <div 
+                      className={`relative h-56 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-1000`}
                       style={{ 
                         transform: isVisible ? 'rotate(-2deg)' : 'rotate(-5deg) scale(0.9)',
                         opacity: isVisible ? 1 : 0,
@@ -284,6 +538,67 @@ const About = () => {
       <div className="absolute top-1/4 left-0 w-64 h-64 bg-[#FDF5AA]/5 rounded-full blur-3xl -z-10"></div>
       <div className="absolute bottom-1/4 right-0 w-48 h-48 bg-[#58A0C8]/5 rounded-full blur-3xl -z-10"></div>
     </section>
+
+    {/* Newspaper Image Modal */}
+    {selectedImage && (
+      <div className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center p-4" onClick={closeImageModal}>
+        <div className="relative max-w-4xl max-h-[90vh] w-full h-full flex items-center justify-center">
+          {/* Close Button */}
+          <button
+            onClick={closeImageModal}
+            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-20 bg-black/50 rounded-full p-2"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          {/* Navigation Buttons */}
+          <button
+            onClick={(e) => { e.stopPropagation(); goToPrevious(); }}
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors bg-black/50 rounded-full p-3 z-20"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          <button
+            onClick={(e) => { e.stopPropagation(); goToNext(); }}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors bg-black/50 rounded-full p-3 z-20"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Main Image */}
+          <div className="relative" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={selectedImage.src}
+              alt={selectedImage.alt}
+              className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
+            />
+            
+            {/* Image Info */}
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-lg">
+              <h3 className="text-xl font-bold text-white hindi-artistic mb-2">
+                {selectedImage.title}
+              </h3>
+              <p className="text-gray-300 hindi-text">
+                {selectedImage.description}
+              </p>
+            </div>
+          </div>
+
+          {/* Image Counter */}
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+            {currentIndex + 1} / {newspaperImages.length}
+          </div>
+        </div>
+      </div>
+    )}
+    </>
   );
 };
 

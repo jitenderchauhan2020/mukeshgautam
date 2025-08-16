@@ -89,14 +89,33 @@ const TVShows = () => {
                           className="w-full h-full object-cover"
                           onError={(e) => {
                             const target = e.target as HTMLImageElement;
-                            target.style.display = 'none';
-                            const fallback = target.nextElementSibling as HTMLElement;
-                            if (fallback) {
-                              fallback.classList.remove('hidden');
+                            const currentSrc = target.src;
+                            
+                            // Try fallback thumbnail qualities
+                            if (currentSrc.includes('hqdefault.jpg')) {
+                              // Try medium quality
+                              target.src = currentSrc.replace('hqdefault.jpg', 'mqdefault.jpg');
+                            } else if (currentSrc.includes('mqdefault.jpg')) {
+                              // Try default quality
+                              target.src = currentSrc.replace('mqdefault.jpg', 'default.jpg');
+                            } else {
+                              // Hide image and show fallback
+                              target.style.display = 'none';
+                              const fallback = target.nextElementSibling as HTMLElement;
+                              if (fallback) {
+                                fallback.classList.remove('hidden');
+                              }
                             }
                           }}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-br from-[#FDF5AA] to-[#58A0C8] hidden"></div>
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#FDF5AA] to-[#58A0C8] hidden items-center justify-center">
+                          <div className="text-center">
+                            <svg className="w-16 h-16 mx-auto mb-2 text-[#113F67]/60" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M2 6a2 2 0 012-2h6l2 2h6a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
+                            </svg>
+                            <p className="text-[#113F67] text-sm font-medium hindi-text">{video.title}</p>
+                          </div>
+                        </div>
                         <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/60 transition-all">
                           <PlayIcon className="h-10 w-10 sm:h-12 sm:w-12 text-white group-hover:scale-110 transition-transform drop-shadow-lg" />
                         </div>
@@ -122,12 +141,12 @@ const TVShows = () => {
               </h3>
               
               <div className="max-w-5xl mx-auto px-4">
-                {/* Mobile: Single Column Layout */}
-                <div className="md:hidden space-y-3">
+                {/* Mobile: Two Column Layout */}
+                <div className="md:hidden grid grid-cols-2 gap-3">
                   {tvShows.map((show, index) => (
                     <div
                       key={index}
-                      className="group relative bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all duration-300 cursor-pointer"
+                      className="group relative bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20 hover:bg-white/20 transition-all duration-300 cursor-pointer"
                       style={{
                         opacity: isVisible ? 1 : 0,
                         transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
@@ -135,25 +154,23 @@ const TVShows = () => {
                         transition: 'all 0.5s ease-out'
                       }}
                     >
-                      <div className="flex items-center space-x-4">
-                        <div className="w-8 h-8 bg-[#FDF5AA] text-[#113F67] rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
-                          {index + 1}
-                        </div>
-                        
-                        <div className="flex-1 min-w-0">
-                          <h4 className="text-base font-bold text-white mb-1 hindi-text leading-tight">
-                            {show.name}
-                          </h4>
-                          <div className="flex items-center space-x-2 text-[#FDF5AA] text-sm">
-                            <TvIcon className="h-4 w-4 flex-shrink-0" />
-                            <span className="font-medium">
-                              {show.channel}
-                            </span>
-                          </div>
+                      <div className="absolute -top-2 -left-2 w-6 h-6 bg-[#FDF5AA] text-[#113F67] rounded-full flex items-center justify-center text-xs font-bold">
+                        {index + 1}
+                      </div>
+                      
+                      <div className="pt-2">
+                        <h4 className="text-sm font-bold text-white mb-2 hindi-text leading-tight">
+                          {show.name}
+                        </h4>
+                        <div className="flex items-center space-x-2 text-[#FDF5AA] text-xs">
+                          <TvIcon className="h-3 w-3 flex-shrink-0" />
+                          <span className="font-medium truncate">
+                            {show.channel}
+                          </span>
                         </div>
                       </div>
                       
-                      <div className="absolute inset-0 bg-gradient-to-r from-[#FDF5AA]/10 to-[#58A0C8]/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#FDF5AA]/10 to-[#58A0C8]/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                     </div>
                   ))}
                 </div>
