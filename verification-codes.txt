@@ -1,0 +1,8 @@
+<!-- Google Site Verification -->
+<!-- Replace with your actual verification code from Google Search Console -->
+<meta name="google-site-verification" content="your-google-verification-code" />
+
+<!-- Bing Site Verification -->  
+<meta name="msvalidate.01" content="your-bing-verification-code" />
+
+<!-- Add these to your layout.tsx head section after getting verification codes -->

@@ -9,47 +9,60 @@ import TVShows from '@/components/sections/TVShows';
 import Gallery from '@/components/sections/Gallery';
 import UpcomingShows from '@/components/sections/UpcomingShows';
 import ContactNew from '@/components/sections/ContactNew';
+import { personSchema, organizationSchema } from '@/lib/schemas';
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      {/* Flash Strip for Upcoming Shows */}
-      <PreHeader />
+    <>
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
       
-      {/* Fixed Navigation */}
-      <Navigation />
-      
-      {/* Main Content */}
-      <div>
-        {/* Hero Section */}
-        <Hero />
+      <main className="min-h-screen">
+        {/* Flash Strip for Upcoming Shows */}
+        <PreHeader />
         
-        {/* About Section */}
-        <About />
+        {/* Fixed Navigation */}
+        <Navigation />
         
-        {/* Poetry Section */}
-        <Poems />
-        
-        {/* Rachnaye (Literary Works) Section */}
-        <Rachnaye />
-        
-        {/* TV Shows Section */}
-        <TVShows />
+        {/* Main Content */}
+        <div>
+          {/* Hero Section */}
+          <Hero />
+          
+          {/* About Section */}
+          <About />
+          
+          {/* Poetry Section */}
+          <Poems />
+          
+          {/* Rachnaye (Literary Works) Section */}
+          <Rachnaye />
+          
+          {/* TV Shows Section */}
+          <TVShows />
 
+          
+          
+          {/* Gallery Section */}
+          <Gallery />
+          
+          {/* Upcoming Shows Section */}
+          <UpcomingShows />
+          
+          {/* Contact Section */}
+          <ContactNew />
+        </div>
         
-        
-        {/* Gallery Section */}
-        <Gallery />
-        
-        {/* Upcoming Shows Section */}
-        <UpcomingShows />
-        
-        {/* Contact Section */}
-        <ContactNew />
-      </div>
-      
-      {/* Footer */}
-      <Footer />
-    </main>
+        {/* Footer */}
+        <Footer />
+      </main>
+    </>
   );
 }
