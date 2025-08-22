@@ -8,35 +8,35 @@ import Image from 'next/image';
 const newspaperImages = [
   {
     id: 'news-1',
-    src: '/images/Newspapers/WhatsApp Image 2025-08-11 at 8.38.26 PM.jpeg',
+    src: '/images/Newspapers/news-1.jpeg',
     title: 'समाचार पत्र में विशेष स्थान',
     description: 'प्रसिद्ध दैनिक में कविता प्रकाशन',
     alt: 'Newspaper Coverage 1'
   },
   {
     id: 'news-2',
-    src: '/images/Newspapers/WhatsApp Image 2025-08-11 at 8.38.27 PM (1).jpeg',
+    src: '/images/Newspapers/news-2.jpeg',
     title: 'साहित्यिक पुरस्कार समाचार',
     description: 'पुरस्कार प्राप्ति की खबर',
     alt: 'Newspaper Coverage 2'
   },
   {
     id: 'news-3',
-    src: '/images/Newspapers/WhatsApp Image 2025-08-11 at 8.38.27 PM (2).jpeg',
+    src: '/images/Newspapers/news-3.jpeg',
     title: 'टीवी शो की समीक्षा',
     description: 'हास्य प्रस्तुति की चर्चा',
     alt: 'Newspaper Coverage 3'
   },
   {
     id: 'news-4',
-    src: '/images/Newspapers/WhatsApp Image 2025-08-11 at 8.38.27 PM.jpeg',
+    src: '/images/Newspapers/news-4.jpeg',
     title: 'काव्य गोष्ठी रिपोर्ट',
     description: 'कविता सम्मेलन का विवरण',
     alt: 'Newspaper Coverage 4'
   },
   {
     id: 'news-5',
-    src: '/images/Newspapers/WhatsApp Image 2025-08-11 at 8.38.28 PM.jpeg',
+    src: '/images/Newspapers/news-5.jpeg',
     title: 'मीडिया में चर्चा',
     description: 'व्यापक मीडिया कवरेज',
     alt: 'Newspaper Coverage 5'
@@ -55,8 +55,6 @@ const About = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [selectedImage, setSelectedImage] = useState<NewspaperImage | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
-  const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -73,20 +71,6 @@ const About = () => {
 
     return () => observer.disconnect();
   }, []);
-
-  // Image loading handlers
-  const handleImageLoad = (imageId: string) => {
-    setLoadedImages(prev => new Set([...prev, imageId]));
-  };
-
-  const handleImageError = (imageId: string) => {
-    setFailedImages(prev => new Set([...prev, imageId]));
-    setLoadedImages(prev => new Set([...prev, imageId])); // Mark as loaded to hide spinner
-  };
-
-  // Check image loading status
-  const isImageLoaded = (imageId: string) => loadedImages.has(imageId);
-  const isImageFailed = (imageId: string) => failedImages.has(imageId);
 
   // Open image in modal
   const openImageModal = (image: NewspaperImage, index: number) => {
@@ -129,12 +113,12 @@ const About = () => {
   }, [selectedImage, currentIndex]);
 
   const aboutImages = [
-    '/images/About/IMG-20250809-WA0021.jpg',
-    '/images/About/WhatsApp Image 2025-08-08 at 10.21.41 PM.jpeg',
-    '/images/About/WhatsApp Image 2025-08-08 at 10.34.15 PM.jpeg',
-    '/images/About/WhatsApp Image 2025-08-08 at 10.38.09 PM.jpeg',
-    '/images/About/WhatsApp Image 2025-08-08 at 22.36.00_767f39dc.jpg',
-    '/images/About/WhatsApp Image 2025-08-08 at 22.38.13_fb966191.jpg',
+    '/images/About/about-image-0.jpg',
+    '/images/About/about-image-1.jpeg',
+    '/images/About/about-image-2.jpeg',
+    '/images/About/about-image-3.jpeg',
+    '/images/About/about-image-4.jpg',
+    '/images/About/about-image-5.jpg',
   ];
 
   return (
@@ -270,38 +254,13 @@ const About = () => {
                         >
                           {/* Image Container - Wider for single column */}
                           <div className="relative w-full h-32 md:h-40 lg:h-48 overflow-hidden">
-                            {/* Loading Spinner */}
-                            {!isImageLoaded(image.id) && (
-                              <div className="absolute inset-0 bg-gradient-to-br from-[#FDF5AA] to-[#34699A] flex items-center justify-center z-20">
-                                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-                              </div>
-                            )}
-                            
-                            {/* Error Placeholder */}
-                            {isImageFailed(image.id) && (
-                              <div className="absolute inset-0 bg-gradient-to-br from-[#FDF5AA] to-[#34699A] flex items-center justify-center z-10">
-                                <div className="text-center p-2">
-                                  <svg className="w-6 h-6 mx-auto mb-1 text-[#34699A]/50" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clipRule="evenodd" />
-                                  </svg>
-                                  <p className="text-[#34699A] text-xs hindi-text font-medium">
-                                    समाचार
-                                  </p>
-                                </div>
-                              </div>
-                            )}
-                            
-                            {/* Main Image */}
-                            <img
+                            {/* Main Image using Next.js Image component */}
+                            <Image
                               src={image.src}
                               alt={image.alt}
-                              className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${
-                                isImageLoaded(image.id) && !isImageFailed(image.id) ? 'opacity-100' : 'opacity-0'
-                              }`}
-                              onLoad={() => handleImageLoad(image.id)}
-                              onError={() => handleImageError(image.id)}
-                              loading="lazy"
-                              decoding="async"
+                              fill
+                              className="object-cover transition-all duration-500 group-hover:scale-110"
+                              onError={() => console.error(`Failed to load image: ${image.src}`)}
                             />
                             
                             {/* Hover Overlay */}

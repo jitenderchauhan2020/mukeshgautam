@@ -7,42 +7,42 @@ import { BookOpenIcon } from '@heroicons/react/24/solid';
 const bookImages = [
   {
     id: 'book-1',
-    src: '/images/books/WhatsApp Image 2025-08-16 at 10.51.27 AM (1).jpeg',
+    src: '/images/Books/book-1.jpeg',
     title: 'साहित्य संग्रह',
     description: 'मुकेश गौतम की रचनाओं का संकलन',
     alt: 'Book Cover - Literary Collection'
   },
   {
     id: 'book-2',
-    src: '/images/books/WhatsApp Image 2025-08-16 at 10.51.27 AM.jpeg',
+    src: '/images/Books/book-2.jpeg',
     title: 'हास्य कविता संग्रह',
     description: 'हास्य कविताओं का अनूठा संकलन',
     alt: 'Book Cover - Comedy Poetry Collection'
   },
   {
     id: 'book-3',
-    src: '/images/books/WhatsApp Image 2025-08-16 at 10.51.28 AM.jpeg',
+    src: '/images/Books/book-3.jpeg',
     title: 'व्यंग्य रचनाएं',
     description: 'समसामयिक विषयों पर व्यंग्यात्मक रचनाएं',
     alt: 'Book Cover - Satirical Writings'
   },
   {
     id: 'book-4',
-    src: '/images/books/WhatsApp Image 2025-08-16 at 10.51.29 AM (1).jpeg',
+    src: '/images/Books/book-4.jpeg',
     title: 'काव्य संग्रह',
     description: 'भावनाओं से भरपूर कविताओं का संग्रह',
     alt: 'Book Cover - Poetry Collection'
   },
   {
     id: 'book-5',
-    src: '/images/books/WhatsApp Image 2025-08-16 at 10.51.29 AM.jpeg',
+    src: '/images/Books/book-5.jpeg',
     title: 'हास्य व्यंग्य',
     description: 'हास्य और व्यंग्य की मिश्रित रचनाएं',
     alt: 'Book Cover - Humor and Satire'
   },
   {
     id: 'book-6',
-    src: '/images/books/WhatsApp Image 2025-08-16 at 10.51.30 AM.jpeg',
+    src: '/images/Books/book-6.jpeg',
     title: 'गद्य संग्रह',
     description: 'गद्य की विविधता से भरपूर संकलन',
     alt: 'Book Cover - Prose Collection'

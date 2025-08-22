@@ -13,19 +13,19 @@ const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const heroImages = [
-    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.23 PM (1).jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.23 PM.jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.24 PM (1).jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.24 PM (2).jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.24 PM.jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.25 PM.jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.26 PM (1).jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.26 PM.jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.27 PM (1).jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.27 PM (2).jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.27 PM.jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.28 PM (1).jpeg',
-    '/images/Hero sections/WhatsApp Image 2025-08-16 at 1.25.28 PM.jpeg'
+    '/images/Hero sections/hero-1.jpeg',
+    '/images/Hero sections/hero-2.jpeg',
+    '/images/Hero sections/hero-3.jpeg',
+    '/images/Hero sections/hero-4.jpeg',
+    '/images/Hero sections/hero-5.jpeg',
+    '/images/Hero sections/hero-6.jpeg',
+    '/images/Hero sections/hero-7.jpeg',
+    '/images/Hero sections/hero-8.jpeg',
+    '/images/Hero sections/hero-9.jpeg',
+    '/images/Hero sections/hero-10.jpeg',
+    '/images/Hero sections/hero-11.jpeg',
+    '/images/Hero sections/hero-12.jpeg',
+    '/images/Hero sections/hero-13.jpeg'
   ];
 
   useEffect(() => {
