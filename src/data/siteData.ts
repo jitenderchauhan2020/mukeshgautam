@@ -33,6 +33,7 @@ export const siteConfig = {
   navigation: [
     { name: "Home", nameEn: "Home", href: "#home" },
     { name: "About", nameEn: "About", href: "#about" },
+    { name: "Updates", nameEn: "Updates", href: "#updates" },
     { name: "Publications", nameEn: "Publications", href: "#rachnaye" },
     { name: "Gallery", nameEn: "Gallery", href: "#gallery" },
     { name: "Upcoming Shows", nameEn: "Upcoming Shows", href: "#upcoming-shows" },

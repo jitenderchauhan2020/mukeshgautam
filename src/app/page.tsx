@@ -3,6 +3,7 @@ import Navigation from '@/components/ui/Navigation';
 import Footer from '@/components/ui/Footer';
 import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';
+import Updates from '@/components/sections/Updates';
 import Poems from '@/components/sections/Poems';
 import Rachnaye from '@/components/sections/Rachnaye';
 import TVShows from '@/components/sections/TVShows';
@@ -38,6 +39,9 @@ export default function Home() {
           
           {/* About Section */}
           <About />
+          
+          {/* Updates Section */}
+          <Updates />
           
           {/* Poetry Section */}
           <Poems />
